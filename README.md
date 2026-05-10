@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Customer 360 ETL Pipeline with Churn Prediction
 
 > Production-quality end-to-end data pipeline: **Extract → Transform → Load → ML → Dashboard**
@@ -269,3 +270,7 @@ python -c "from etl.incremental import IncrementalLoader; IncrementalLoader().re
 ## License
 
 MIT — see LICENSE file.
+=======
+# Customer-360-etl
+Customer 360 ETL pipeline with automated data ingestion, cleaning, transformation, and interactive analytics dashboard.
+>>>>>>> f222003862bdbf554c3a693bd42640577451d59c
