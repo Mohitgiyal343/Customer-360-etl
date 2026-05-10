@@ -1,0 +1,1092 @@
+2026-04-23 14:08:38 | INFO     | __main__ | ============================================================
+2026-04-23 14:08:38 | INFO     | __main__ |   Customer 360 ETL Pipeline � Starting
+2026-04-23 14:08:38 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-23 14:08:38 | INFO     | __main__ | ============================================================
+2026-04-23 14:08:38 | INFO     | __main__ | Sample data found � skipping generation.
+2026-04-23 14:08:44 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-23 14:08:44 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-23 14:08:44 | INFO     | etl.extract | [customers] Loaded 510 rows � 14 columns.
+2026-04-23 14:08:44 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-23 14:08:44 | INFO     | etl.extract | [orders] Loaded 2500 rows � 11 columns.
+2026-04-23 14:08:44 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-23 14:08:44 | INFO     | etl.extract | [transactions] Loaded 6000 rows � 8 columns.
+2026-04-23 14:08:44 | INFO     | etl.extract | Extraction complete � 9010 total rows across 3 sources.
+2026-04-23 14:08:44 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Cleaning customers � initial rows: 510
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Customers cleaned � rows: 500
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Cleaning orders � initial rows: 2500
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Orders cleaned � rows: 2350
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Cleaning transactions � initial rows: 6000
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Transactions cleaned � rows: 6000
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Feature engineering complete � 500 customers.
+2026-04-23 14:08:44 | INFO     | etl.transform | [transform] Churn label applied � threshold=90 days | churn_rate=100.0%
+2026-04-23 14:08:44 | INFO     | etl.transform | Transformation complete � dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-23 14:08:44 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-23 14:09:18 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-23 14:09:18 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           69
+New Customer       68
+At Risk            60
+Loyal              55
+Potential Loyal    49
+Promising          23
+2026-04-23 14:09:18 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-23 14:09:18 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-23 14:09:18 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-23 14:09:18 | INFO     | ml.ml_model | [ml] Dataset � total=500 | churned=500 (100.0%) | active=0
+2026-04-23 14:09:18 | ERROR    | __main__ | Pipeline failed with unexpected error: The target 'y' needs to have more than 1 class. Got 1 class instead
+Traceback (most recent call last):
+  File "D:\customer-360-etl\main.py", line 180, in main
+    summary = run_pipeline(
+              ^^^^^^^^^^^^^
+  File "D:\customer-360-etl\main.py", line 139, in run_pipeline
+    predictions, metrics = predictor.run(customer_360)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\customer-360-etl\ml\ml_model.py", line 265, in run
+    self.train(df)
+  File "D:\customer-360-etl\ml\ml_model.py", line 133, in train
+    X_train, y_train = smote.fit_resample(X_train, y_train)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohit\AppData\Local\Programs\Python\Python311\Lib\site-packages\imblearn\base.py", line 204, in fit_resample
+    return super().fit_resample(X, y, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohit\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohit\AppData\Local\Programs\Python\Python311\Lib\site-packages\imblearn\base.py", line 103, in fit_resample
+    self.sampling_strategy_ = check_sampling_strategy(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohit\AppData\Local\Programs\Python\Python311\Lib\site-packages\imblearn\utils\_validation.py", line 533, in check_sampling_strategy
+    raise ValueError(
+ValueError: The target 'y' needs to have more than 1 class. Got 1 class instead
+2026-04-23 22:45:47 | INFO     | __main__ | ============================================================
+2026-04-23 22:45:47 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-04-23 22:45:47 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-23 22:45:47 | INFO     | __main__ | ============================================================
+2026-04-23 22:45:47 | INFO     | __main__ | Generating synthetic sample data ...
+2026-04-23 22:46:02 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-23 22:46:02 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-23 22:46:02 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-04-23 22:46:02 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-23 22:46:02 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-04-23 22:46:02 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-23 22:46:02 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-04-23 22:46:02 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-04-23 22:46:02 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-23 22:46:02 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-04-23 22:46:02 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-04-23 22:46:03 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-04-23 22:46:03 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-23 22:46:03 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-23 22:46:43 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-23 22:46:43 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-04-23 22:46:43 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-23 22:46:43 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-04-23 22:46:43 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-23 22:46:43 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-23 22:46:43 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-04-23 22:46:48 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-04-23 22:46:49 | INFO     | ml.ml_model | [ml] RandomForest trained in 1.39s.
+2026-04-23 22:46:50 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.9600 | ROC-AUC: 0.9936
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.96      0.96      0.96        49
+     Churned       0.96      0.96      0.96        51
+
+    accuracy                           0.96       100
+   macro avg       0.96      0.96      0.96       100
+weighted avg       0.96      0.96      0.96       100
+
+2026-04-23 22:46:51 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[47  2]
+ [ 2 49]]
+2026-04-23 22:47:02 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-04-23 22:47:03 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-04-23 22:47:03 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-04-23 22:47:04 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-04-23 22:47:04 | INFO     | etl.load | === LOAD PHASE ===
+2026-04-23 22:47:04 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-04-23 22:47:04 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-04-23 22:47:04 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-04-23 22:47:04 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-04-23 22:47:04 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-04-23 22:47:04 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-04-23 22:47:04 | INFO     | __main__ | ============================================================
+2026-04-23 22:47:04 | INFO     | __main__ |   Pipeline completed in 67.80s
+2026-04-23 22:47:04 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-04-23 22:47:04 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-04-23 22:47:04 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-04-23 22:47:04 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-04-23 22:47:04 | INFO     | __main__ | ============================================================
+2026-04-24 00:59:50 | INFO     | __main__ | ============================================================
+2026-04-24 00:59:50 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-04-24 00:59:50 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-24 00:59:50 | INFO     | __main__ | ============================================================
+2026-04-24 00:59:50 | INFO     | __main__ | Sample data found — skipping generation.
+2026-04-24 00:59:55 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-24 00:59:55 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-24 00:59:55 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-04-24 00:59:55 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-24 00:59:56 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-04-24 00:59:56 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-24 00:59:56 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-04-24 00:59:56 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-04-24 00:59:56 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-04-24 00:59:56 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-04-24 00:59:56 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-24 00:59:56 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-24 01:00:21 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-24 01:00:21 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-04-24 01:00:21 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-24 01:00:21 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-04-24 01:00:21 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-24 01:00:21 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-24 01:00:21 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-04-24 01:00:26 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-04-24 01:00:27 | INFO     | ml.ml_model | [ml] RandomForest trained in 1.20s.
+2026-04-24 01:00:28 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.9600 | ROC-AUC: 0.9936
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.96      0.96      0.96        49
+     Churned       0.96      0.96      0.96        51
+
+    accuracy                           0.96       100
+   macro avg       0.96      0.96      0.96       100
+weighted avg       0.96      0.96      0.96       100
+
+2026-04-24 01:00:29 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[47  2]
+ [ 2 49]]
+2026-04-24 01:00:38 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-04-24 01:00:39 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-04-24 01:00:39 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-04-24 01:00:40 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-04-24 01:00:40 | INFO     | etl.load | === LOAD PHASE ===
+2026-04-24 01:00:40 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-04-24 01:00:40 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-04-24 01:00:40 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-04-24 01:00:40 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-04-24 01:00:40 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-04-24 01:00:40 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-04-24 01:00:40 | INFO     | __main__ | ============================================================
+2026-04-24 01:00:40 | INFO     | __main__ |   Pipeline completed in 50.20s
+2026-04-24 01:00:40 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-04-24 01:00:40 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-04-24 01:00:40 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-04-24 01:00:40 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-04-24 01:00:40 | INFO     | __main__ | ============================================================
+2026-04-25 12:13:53 | INFO     | __main__ | ============================================================
+2026-04-25 12:13:53 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-04-25 12:13:53 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-25 12:13:53 | INFO     | __main__ | ============================================================
+2026-04-25 12:13:53 | INFO     | __main__ | Sample data found — skipping generation.
+2026-04-25 12:14:00 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-25 12:14:00 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-25 12:14:00 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-04-25 12:14:00 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-25 12:14:00 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-04-25 12:14:00 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-25 12:14:00 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-04-25 12:14:00 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-04-25 12:14:00 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-04-25 12:14:00 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-04-25 12:14:00 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-25 12:14:00 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-25 12:14:22 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-25 12:14:22 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-04-25 12:14:22 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-25 12:14:22 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-04-25 12:14:22 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-25 12:14:22 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-25 12:14:22 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.42s.
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.9600 | ROC-AUC: 0.9936
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.96      0.96      0.96        49
+     Churned       0.96      0.96      0.96        51
+
+    accuracy                           0.96       100
+   macro avg       0.96      0.96      0.96       100
+weighted avg       0.96      0.96      0.96       100
+
+2026-04-25 12:14:27 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[47  2]
+ [ 2 49]]
+2026-04-25 12:14:31 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-04-25 12:14:31 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-04-25 12:14:32 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-04-25 12:14:32 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-04-25 12:14:32 | INFO     | etl.load | === LOAD PHASE ===
+2026-04-25 12:14:32 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-04-25 12:14:32 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-04-25 12:14:32 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-04-25 12:14:32 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-04-25 12:14:32 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-04-25 12:14:32 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-04-25 12:14:32 | INFO     | __main__ | ============================================================
+2026-04-25 12:14:32 | INFO     | __main__ |   Pipeline completed in 38.28s
+2026-04-25 12:14:32 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-04-25 12:14:32 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-04-25 12:14:32 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-04-25 12:14:32 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-04-25 12:14:32 | INFO     | __main__ | ============================================================
+2026-04-25 12:27:37 | INFO     | __main__ | ============================================================
+2026-04-25 12:27:37 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-04-25 12:27:37 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-25 12:27:37 | INFO     | __main__ | ============================================================
+2026-04-25 12:27:37 | INFO     | __main__ | Sample data found — skipping generation.
+2026-04-25 12:27:38 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-25 12:27:38 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-25 12:27:38 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-04-25 12:27:38 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-25 12:27:38 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-04-25 12:27:38 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-25 12:27:38 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-04-25 12:27:38 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-04-25 12:27:38 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-04-25 12:27:38 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-04-25 12:27:38 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-25 12:27:38 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-25 12:27:41 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-25 12:27:41 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-04-25 12:27:41 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-25 12:27:41 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-04-25 12:27:41 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-25 12:27:41 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-25 12:27:41 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-04-25 12:27:44 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.42s.
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-04-25 12:27:45 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-04-25 12:27:49 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-04-25 12:27:49 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-04-25 12:27:50 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-04-25 12:27:50 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-04-25 12:27:50 | INFO     | etl.load | === LOAD PHASE ===
+2026-04-25 12:27:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-04-25 12:27:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-04-25 12:27:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-04-25 12:27:50 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-04-25 12:27:50 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-04-25 12:27:50 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-04-25 12:27:50 | INFO     | __main__ | ============================================================
+2026-04-25 12:27:50 | INFO     | __main__ |   Pipeline completed in 13.22s
+2026-04-25 12:27:50 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-04-25 12:27:50 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-04-25 12:27:50 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-04-25 12:27:50 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-04-25 12:27:50 | INFO     | __main__ | ============================================================
+2026-04-25 22:59:37 | INFO     | __main__ | ============================================================
+2026-04-25 22:59:37 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-04-25 22:59:37 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-04-25 22:59:37 | INFO     | __main__ | ============================================================
+2026-04-25 22:59:37 | INFO     | __main__ | Generating synthetic sample data ...
+2026-04-25 22:59:39 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-04-25 22:59:39 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-04-25 22:59:39 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-04-25 22:59:39 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-04-25 22:59:39 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-04-25 22:59:39 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-04-25 22:59:39 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-04-25 22:59:39 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-04-25 22:59:39 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-04-25 22:59:39 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-04-25 22:59:39 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-04-25 22:59:39 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-04-25 22:59:41 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-04-25 22:59:41 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-04-25 22:59:41 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-04-25 22:59:41 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-04-25 22:59:41 | INFO     | ml.ml_model | === ML PHASE ===
+2026-04-25 22:59:41 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-04-25 22:59:41 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-04-25 22:59:43 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.36s.
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-04-25 22:59:44 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-04-25 22:59:49 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-04-25 22:59:49 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-04-25 22:59:50 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-04-25 22:59:50 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-04-25 22:59:50 | INFO     | etl.load | === LOAD PHASE ===
+2026-04-25 22:59:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-04-25 22:59:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-04-25 22:59:50 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-04-25 22:59:50 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-04-25 22:59:50 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-04-25 22:59:50 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-04-25 22:59:50 | INFO     | __main__ | ============================================================
+2026-04-25 22:59:50 | INFO     | __main__ |   Pipeline completed in 11.34s
+2026-04-25 22:59:50 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-04-25 22:59:50 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-04-25 22:59:50 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-04-25 22:59:50 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-04-25 22:59:50 | INFO     | __main__ | ============================================================
+2026-05-04 01:22:50 | INFO     | __main__ | ============================================================
+2026-05-04 01:22:50 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-05-04 01:22:50 | INFO     | __main__ |   skip_db=False | incremental=False | skip_ml=False
+2026-05-04 01:22:50 | INFO     | __main__ | ============================================================
+2026-05-04 01:22:50 | INFO     | __main__ | Sample data found — skipping generation.
+2026-05-04 01:22:58 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-05-04 01:22:58 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-05-04 01:22:59 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-05-04 01:22:59 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-05-04 01:22:59 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-05-04 01:22:59 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-05-04 01:22:59 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-05-04 01:22:59 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-05-04 01:22:59 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-05-04 01:22:59 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-05-04 01:22:59 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-05-04 01:22:59 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-05-04 01:23:34 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-05-04 01:23:34 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-05-04 01:23:34 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-05-04 01:23:34 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-05-04 01:23:34 | INFO     | ml.ml_model | === ML PHASE ===
+2026-05-04 01:23:34 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-05-04 01:23:34 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-05-04 01:23:39 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.54s.
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-05-04 01:23:40 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-05-04 01:23:46 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-05-04 01:23:47 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-05-04 01:23:47 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-05-04 01:23:47 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-05-04 01:23:47 | INFO     | etl.load | === LOAD PHASE ===
+2026-05-04 01:23:47 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-05-04 01:23:47 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-05-04 01:23:47 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-05-04 01:23:51 | INFO     | etl.load | [load] Creating schema (if not exists) ...
+2026-05-04 01:23:55 | ERROR    | etl.load | [load] Database connection error: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-04 01:23:55 | WARNING  | etl.load | [load] CSV output is still available at D:\customer-360-etl\data\processed
+2026-05-04 01:23:55 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-05-04 01:39:05 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-05-04 01:39:06 | INFO     | __main__ | ============================================================
+2026-05-04 01:39:06 | INFO     | __main__ |   Pipeline completed in 975.33s
+2026-05-04 01:39:06 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-05-04 01:39:06 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-05-04 01:39:06 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-05-04 01:39:06 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-05-04 01:39:06 | INFO     | __main__ | ============================================================
+2026-05-04 13:21:08 | INFO     | __main__ | ============================================================
+2026-05-04 13:21:08 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-05-04 13:21:08 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-05-04 13:21:08 | INFO     | __main__ | ============================================================
+2026-05-04 13:21:08 | INFO     | __main__ | Sample data found — skipping generation.
+2026-05-04 13:21:09 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-05-04 13:21:09 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-05-04 13:21:09 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-05-04 13:21:09 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-05-04 13:21:09 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-05-04 13:21:09 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-05-04 13:21:09 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-05-04 13:21:09 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-05-04 13:21:09 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-05-04 13:21:09 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-05-04 13:21:09 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-05-04 13:21:09 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-05-04 13:21:11 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-05-04 13:21:11 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-05-04 13:21:11 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-05-04 13:21:11 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-05-04 13:21:11 | INFO     | ml.ml_model | === ML PHASE ===
+2026-05-04 13:21:11 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-05-04 13:21:11 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-05-04 13:21:13 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-05-04 13:21:13 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.19s.
+2026-05-04 13:21:13 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-05-04 13:21:14 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-05-04 13:21:17 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-05-04 13:21:17 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-05-04 13:21:17 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-05-04 13:21:17 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-05-04 13:21:17 | INFO     | etl.load | === LOAD PHASE ===
+2026-05-04 13:21:17 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-05-04 13:21:17 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-05-04 13:21:17 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-05-04 13:21:17 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-05-04 13:21:17 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-05-04 13:21:17 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-05-04 13:21:17 | INFO     | __main__ | ============================================================
+2026-05-04 13:21:17 | INFO     | __main__ |   Pipeline completed in 9.78s
+2026-05-04 13:21:17 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-05-04 13:21:17 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-05-04 13:21:17 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-05-04 13:21:17 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-05-04 13:21:17 | INFO     | __main__ | ============================================================
+2026-05-04 14:26:45 | INFO     | __main__ | ============================================================
+2026-05-04 14:26:45 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-05-04 14:26:45 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-05-04 14:26:45 | INFO     | __main__ | ============================================================
+2026-05-04 14:26:45 | INFO     | __main__ | Sample data found — skipping generation.
+2026-05-04 14:26:47 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-05-04 14:26:47 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-05-04 14:26:47 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-05-04 14:26:47 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-05-04 14:26:47 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-05-04 14:26:47 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-05-04 14:26:47 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-05-04 14:26:47 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-05-04 14:26:47 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-05-04 14:26:47 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-05-04 14:26:47 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-05-04 14:26:47 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-05-04 14:26:52 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-05-04 14:26:52 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-05-04 14:26:52 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-05-04 14:26:52 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-05-04 14:26:52 | INFO     | ml.ml_model | === ML PHASE ===
+2026-05-04 14:26:52 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-05-04 14:26:52 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-05-04 14:26:56 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.39s.
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-05-04 14:26:57 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-05-04 14:27:01 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-05-04 14:27:01 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-05-04 14:27:01 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-05-04 14:27:01 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-05-04 14:27:01 | INFO     | etl.load | === LOAD PHASE ===
+2026-05-04 14:27:01 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-05-04 14:27:01 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-05-04 14:27:01 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-05-04 14:27:01 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-05-04 14:27:01 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-05-04 14:27:01 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-05-04 14:27:01 | INFO     | __main__ | ============================================================
+2026-05-04 14:27:01 | INFO     | __main__ |   Pipeline completed in 16.32s
+2026-05-04 14:27:01 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-05-04 14:27:01 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-05-04 14:27:01 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-05-04 14:27:01 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-05-04 14:27:01 | INFO     | __main__ | ============================================================
+2026-05-04 14:37:31 | INFO     | __main__ | ============================================================
+2026-05-04 14:37:31 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-05-04 14:37:31 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-05-04 14:37:31 | INFO     | __main__ | ============================================================
+2026-05-04 14:37:31 | INFO     | __main__ | Sample data found — skipping generation.
+2026-05-04 14:37:33 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-05-04 14:37:33 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-05-04 14:37:33 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-05-04 14:37:33 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-05-04 14:37:33 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-05-04 14:37:33 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-05-04 14:37:33 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-05-04 14:37:33 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-05-04 14:37:33 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-05-04 14:37:33 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-05-04 14:37:33 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-05-04 14:37:33 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-05-04 14:37:33 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-05-04 14:37:34 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-05-04 14:37:34 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-05-04 14:37:34 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-05-04 14:37:37 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-05-04 14:37:37 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-05-04 14:37:37 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-05-04 14:37:37 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-05-04 14:37:37 | INFO     | ml.ml_model | === ML PHASE ===
+2026-05-04 14:37:37 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-05-04 14:37:37 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-05-04 14:37:40 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-05-04 14:37:40 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.39s.
+2026-05-04 14:37:40 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-05-04 14:37:41 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-05-04 14:37:45 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-05-04 14:37:45 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-05-04 14:37:45 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-05-04 14:37:45 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-05-04 14:37:45 | INFO     | etl.load | === LOAD PHASE ===
+2026-05-04 14:37:46 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-05-04 14:37:46 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-05-04 14:37:46 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-05-04 14:37:46 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-05-04 14:37:46 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-05-04 14:37:46 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-05-04 14:37:46 | INFO     | __main__ | ============================================================
+2026-05-04 14:37:46 | INFO     | __main__ |   Pipeline completed in 14.17s
+2026-05-04 14:37:46 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-05-04 14:37:46 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-05-04 14:37:46 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-05-04 14:37:46 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-05-04 14:37:46 | INFO     | __main__ | ============================================================
+2026-05-07 22:22:15 | INFO     | __main__ | ============================================================
+2026-05-07 22:22:15 | INFO     | __main__ |   Customer 360 ETL Pipeline — Starting
+2026-05-07 22:22:15 | INFO     | __main__ |   skip_db=True | incremental=False | skip_ml=False
+2026-05-07 22:22:15 | INFO     | __main__ | ============================================================
+2026-05-07 22:22:15 | INFO     | __main__ | Generating synthetic sample data ...
+2026-05-07 22:22:23 | INFO     | etl.extract | === EXTRACT PHASE ===
+2026-05-07 22:22:23 | INFO     | etl.extract | [customers] Reading CSV: D:\customer-360-etl\data\raw\customers.csv
+2026-05-07 22:22:23 | INFO     | etl.extract | [customers] Loaded 510 rows × 14 columns.
+2026-05-07 22:22:23 | INFO     | etl.extract | [orders] Reading CSV: D:\customer-360-etl\data\raw\orders.csv
+2026-05-07 22:22:23 | INFO     | etl.extract | [orders] Loaded 2500 rows × 11 columns.
+2026-05-07 22:22:23 | INFO     | etl.extract | [transactions] Reading CSV: D:\customer-360-etl\data\raw\transactions.csv
+2026-05-07 22:22:23 | INFO     | etl.extract | [transactions] Loaded 6000 rows × 8 columns.
+2026-05-07 22:22:23 | INFO     | etl.extract | Extraction complete — 9010 total rows across 3 sources.
+2026-05-07 22:22:23 | INFO     | etl.transform | === TRANSFORM PHASE ===
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Reference date set to data max: 2024-12-30
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Cleaning customers — initial rows: 510
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Customers cleaned — rows: 500
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Cleaning orders — initial rows: 2500
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Orders cleaned — rows: 2350
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Cleaning transactions — initial rows: 6000
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Transactions cleaned — rows: 6000
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Engineering customer features ...
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Feature engineering complete — 500 customers.
+2026-05-07 22:22:23 | INFO     | etl.transform | [transform] Churn label applied — threshold=90 days | churn_rate=50.6%
+2026-05-07 22:22:23 | INFO     | etl.transform | Transformation complete — dim_customers=500 | fact_orders=2350 | customer_360=500
+2026-05-07 22:22:23 | INFO     | __main__ | === RFM SEGMENTATION ===
+2026-05-07 22:22:48 | INFO     | ml.rfm | [rfm] Computing RFM scores for 500 customers ...
+2026-05-07 22:22:48 | INFO     | ml.rfm | [rfm] Segment distribution:
+RFM_Segment
+Lost               95
+Need Attention     81
+Champion           70
+New Customer       69
+At Risk            60
+Loyal              54
+Potential Loyal    49
+Promising          22
+2026-05-07 22:22:48 | INFO     | ml.rfm | [rfm] RFM segmentation complete.
+2026-05-07 22:22:48 | INFO     | __main__ | RFM segments saved → D:\customer-360-etl\data\processed\rfm_segments.csv
+2026-05-07 22:22:48 | INFO     | ml.ml_model | === ML PHASE ===
+2026-05-07 22:22:48 | INFO     | ml.ml_model | [ml] Starting model training ...
+2026-05-07 22:22:48 | INFO     | ml.ml_model | [ml] Dataset — total=500 | churned=253 (50.6%) | active=247
+2026-05-07 22:22:52 | INFO     | ml.ml_model | [ml] SMOTE applied — train set now 404 rows.
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] RandomForest trained in 0.40s.
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] === RandomForest Evaluation ===
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] RandomForest — Accuracy: 1.0000 | ROC-AUC: 1.0000
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       1.00      1.00      1.00        49
+     Churned       1.00      1.00      1.00        51
+
+    accuracy                           1.00       100
+   macro avg       1.00      1.00      1.00       100
+weighted avg       1.00      1.00      1.00       100
+
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[49  0]
+ [ 0 51]]
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] === Logistic Regression Evaluation ===
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] LogisticRegression — Accuracy: 0.7900 | ROC-AUC: 0.8583
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] Classification Report:
+              precision    recall  f1-score   support
+
+      Active       0.77      0.82      0.79        49
+     Churned       0.81      0.76      0.79        51
+
+    accuracy                           0.79       100
+   macro avg       0.79      0.79      0.79       100
+weighted avg       0.79      0.79      0.79       100
+
+2026-05-07 22:22:53 | INFO     | ml.ml_model | [ml] Confusion Matrix:
+[[40  9]
+ [12 39]]
+2026-05-07 22:22:58 | INFO     | ml.ml_model | [ml] 5-Fold CV ROC-AUC: 0.9999 ± 0.0002
+2026-05-07 22:22:58 | INFO     | ml.ml_model | [ml] Top-10 Feature Importances:
+DaysSinceLastPurchase     0.622637
+OrderFrequencyPerMonth    0.167972
+CLV                       0.069639
+TotalQuantity             0.015028
+TotalOrders               0.015014
+TotalTransactionAmount    0.014967
+TenureDays                0.014496
+TotalRevenue              0.012009
+Age                       0.011749
+AvgTransactionAmount      0.011612
+2026-05-07 22:22:58 | INFO     | ml.ml_model | [ml] Predictions saved → D:\customer-360-etl\data\processed\churn_predictions.csv
+2026-05-07 22:22:59 | INFO     | ml.ml_model | [ml] Model saved → D:\customer-360-etl\data\processed\churn_model.pkl
+2026-05-07 22:22:59 | INFO     | etl.load | === LOAD PHASE ===
+2026-05-07 22:22:59 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\dim_customers.csv (500 rows)
+2026-05-07 22:22:59 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\fact_orders.csv (2350 rows)
+2026-05-07 22:22:59 | INFO     | etl.load | [load] CSV backup written to D:\customer-360-etl\data\processed\customer_360.csv (500 rows)
+2026-05-07 22:22:59 | WARNING  | etl.load | [load] DB load skipped (skip_db=True). CSV outputs only.
+2026-05-07 22:22:59 | INFO     | dashboard.export_powerbi | [dashboard] Preparing Power BI export ...
+2026-05-07 22:22:59 | INFO     | dashboard.export_powerbi | [dashboard] Power BI export complete — 500 rows × 42 columns → D:\customer-360-etl\dashboard\customer_360_powerbi.csv
+2026-05-07 22:22:59 | INFO     | __main__ | ============================================================
+2026-05-07 22:22:59 | INFO     | __main__ |   Pipeline completed in 37.54s
+2026-05-07 22:22:59 | INFO     | __main__ |   Extracted: {'customers': 510, 'orders': 2500, 'transactions': 6000}
+2026-05-07 22:22:59 | INFO     | __main__ |   Transformed: {'dim_customers': 500, 'fact_orders': 2350, 'customer_360': 500}
+2026-05-07 22:22:59 | INFO     | __main__ |   ML Metrics: {'model': 'RandomForest', 'accuracy': 1.0, 'roc_auc': 1.0, 'cv_roc_auc_mean': 0.9999, 'cv_roc_auc_std': 0.0002}
+2026-05-07 22:22:59 | INFO     | __main__ |   Outputs → D:\customer-360-etl\data\processed
+2026-05-07 22:22:59 | INFO     | __main__ | ============================================================

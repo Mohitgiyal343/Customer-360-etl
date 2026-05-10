@@ -1,0 +1,511 @@
+CustomerID,FirstName,LastName,Email,Phone,Gender,Age,Country,City,Segment,RegistrationDate,IsActive,CreditLimit,PreferredPayment
+CUST00001,Aiden,Perez,aiden.perez0@example.com,+44-7258-858889,Prefer not to say,56.0,Sweden,City_48,Startup,2024-09-20 07:33:32,True,46639.85,PayPal
+CUST00002,Richard,Harris,richard.harris1@example.com,+44-7872-788457,Prefer not to say,,United States,City_40,Individual,2022-06-22 22:43:23,True,28474.09,Bank Transfer
+CUST00003,Thomas,Robinson,thomas.robinson2@example.com,+44-7987-731977,Female,46.0,Australia,City_16,SMB,2022-02-08 20:28:06,True,34984.22,Debit Card
+CUST00004,John,Lee,john.lee3@example.com,+44-7894-257677,Non-binary,32.0,France,,Enterprise,2023-03-04 05:50:10,True,46163.72,Bank Transfer
+CUST00005,Mia,Gonzalez,mia.gonzalez4@example.com,,Male,60.0,Netherlands,City_24,Individual,2023-01-16 10:13:48,True,35508.31,Bank Transfer
+CUST00006,James,Thomas,james.thomas5@example.com,+44-7596-795847,Male,25.0,United Kingdom,City_38,Individual,2022-12-13 17:53:58,True,8050.68,Debit Card
+CUST00007,Evelyn,Harris,evelyn.harris6@example.com,+44-7144-466813,Non-binary,38.0,Sweden,City_32,Individual,2022-08-05 18:21:03,True,29026.27,PayPal
+CUST00008,Benjamin,Anderson,benjamin.anderson7@example.com,+44-7317-787923,Male,56.0,Germany,City_50,SMB,2022-06-09 05:17:49,True,30532.39,PayPal
+CUST00009,Richard,Clark,richard.clark8@example.com,+44-7715-794299,Non-binary,36.0,Italy,City_50,Individual,2024-11-17 05:11:07,True,21494.47,Debit Card
+CUST00010,Emma,Williams,emma.williams9@example.com,+44-7401-235215,Non-binary,40.0,Belgium,City_13,Startup,2024-04-27 04:44:17,False,36953.99,Bank Transfer
+CUST00011,Mia,Lee,mia.lee10@example.com,+44-7609-843266,Prefer not to say,28.0,Germany,City_47,Enterprise,2022-05-16 01:18:52,True,46751.17,Bank Transfer
+CUST00012,Robert,Walker,robert.walker11@example.com,+44-7960-188834,Prefer not to say,28.0,Germany,City_35,Individual,2024-07-06 07:09:23,True,46315.64,PayPal
+CUST00013,Olivia,Harris,olivia.harris12@example.com,+44-7317-686072,Female,41.0,France,City_49,Enterprise,2023-10-18 10:23:08,True,22816.55,PayPal
+CUST00014,Liam,Harris,liam.harris13@example.com,+44-7385-774751,Prefer not to say,70.0,Netherlands,City_16,SMB,2022-02-19 08:56:39,True,6105.28,PayPal
+CUST00015,Linda,Martinez,linda.martinez14@example.com,+44-7810-444432,Non-binary,53.0,Italy,City_10,Enterprise,2022-02-16 06:55:15,True,49249.64,Bank Transfer
+CUST00016,Karen,Young,karen.young15@example.com,+44-7832-234001,Female,57.0,Netherlands,City_1,Individual,2022-05-26 13:12:42,True,42025.46,Bank Transfer
+CUST00017,Logan,Williams,logan.williams16@example.com,+44-7686-836971,Male,41.0,Sweden,City_27,SMB,2022-12-06 15:24:52,True,6670.8,PayPal
+CUST00018,Karen,Rodriguez,karen.rodriguez17@example.com,+44-7848-874661,Non-binary,20.0,Spain,,SMB,2022-12-28 10:13:36,False,46081.67,PayPal
+CUST00019,Lucas,Allen,lucas.allen18@example.com,+44-7701-651963,Female,39.0,Australia,City_15,SMB,2024-02-25 01:00:38,False,43559.87,Bank Transfer
+CUST00020,Liam,Perez,liam.perez19@example.com,+44-7095-777406,Prefer not to say,70.0,Sweden,City_35,SMB,2024-07-24 04:53:06,True,26182.48,Credit Card
+CUST00021,Sophia,Miller,sophia.miller20@example.com,+44-7686-543973,Non-binary,19.0,Netherlands,City_23,SMB,2022-02-11 05:19:57,True,29768.13,Bank Transfer
+CUST00022,Charles,Lewis,charles.lewis21@example.com,+44-7520-479404,Female,41.0,Sweden,City_41,Enterprise,2024-05-21 20:43:57,True,20250.63,Debit Card
+CUST00023,Abigail,Miller,abigail.miller22@example.com,+44-7018-480211,Male,61.0,Germany,City_45,Individual,2022-11-05 21:12:17,True,3210.7,Debit Card
+CUST00024,William,King,william.king23@example.com,+44-7316-289019,Non-binary,47.0,Sweden,City_1,Enterprise,2024-10-06 13:26:52,True,17092.26,Bank Transfer
+CUST00025,Richard,Robinson,richard.robinson24@example.com,+44-7973-324597,Non-binary,55.0,Sweden,City_22,Individual,2024-04-26 12:53:27,True,40241.25,Debit Card
+CUST00026,Lucas,Smith,lucas.smith25@example.com,+44-7349-903373,Female,19.0,Netherlands,City_1,SMB,2023-10-14 16:49:57,True,729.29,Credit Card
+CUST00027,Aiden,Martinez,aiden.martinez26@example.com,+44-7497-301332,Female,38.0,Germany,City_49,SMB,2022-12-09 10:37:19,True,17008.21,Credit Card
+CUST00028,Elizabeth,Clark,elizabeth.clark27@example.com,+44-7231-244247,Prefer not to say,50.0,Italy,City_43,Startup,2023-11-29 19:43:37,True,20209.35,Credit Card
+CUST00029,Karen,Martinez,karen.martinez28@example.com,+44-7158-180913,Prefer not to say,29.0,United Kingdom,City_25,Startup,2024-07-04 09:25:01,False,27101.08,Debit Card
+CUST00030,Sophia,Jones,sophia.jones29@example.com,+44-7302-985447,Non-binary,39.0,Germany,City_48,Enterprise,2023-03-09 03:42:04,True,46032.85,PayPal
+CUST00031,Abigail,Walker,abigail.walker30@example.com,+44-7807-206053,Male,61.0,United Kingdom,,Enterprise,2022-01-11 02:17:28,True,17644.13,Credit Card
+CUST00032,James,Taylor,james.taylor31@example.com,+44-7519-908320,Prefer not to say,,Netherlands,City_20,Individual,2022-09-06 00:31:50,True,17674.18,Credit Card
+CUST00033,Karen,Perez,karen.perez32@example.com,+44-7552-975686,Male,66.0,Germany,City_7,Individual,2023-10-19 12:12:24,True,37006.31,PayPal
+CUST00034,Charles,Sanchez,charles.sanchez33@example.com,+44-7756-652108,Female,44.0,France,City_14,Startup,2023-06-13 13:27:31,True,22884.79,Bank Transfer
+CUST00035,Susan,Garcia,susan.garcia34@example.com,+44-7038-794083,Female,59.0,Spain,City_34,Startup,2023-03-08 15:47:40,True,11617.94,PayPal
+CUST00036,Mia,Perez,mia.perez35@example.com,+44-7344-903531,Prefer not to say,45.0,Australia,City_16,Individual,2022-08-30 12:41:45,True,22895.76,Bank Transfer
+CUST00037,Liam,Harris,liam.harris36@example.com,+44-7632-237414,Non-binary,33.0,France,City_27,Enterprise,2022-12-01 11:28:43,True,7472.42,Bank Transfer
+CUST00038,Amelia,Lee,amelia.lee37@example.com,+44-7611-495019,Female,32.0,Australia,City_32,Individual,2023-06-07 21:09:15,True,9231.16,PayPal
+CUST00039,Mason,Young,mason.young38@example.com,+44-7157-270128,Male,64.0,France,City_4,Enterprise,2022-06-08 18:40:31,True,25169.2,Credit Card
+CUST00040,Mason,Williams,mason.williams39@example.com,+44-7185-971728,Non-binary,68.0,Netherlands,City_10,Individual,2022-05-25 01:48:56,True,21236.81,Bank Transfer
+CUST00041,Susan,Jones,susan.jones40@example.com,+44-7709-908554,Prefer not to say,61.0,Australia,City_46,SMB,2023-08-14 04:42:59,False,45784.87,PayPal
+CUST00042,Logan,Thomas,logan.thomas41@example.com,+44-7639-948343,Female,72.0,Belgium,City_18,SMB,2022-05-31 05:50:52,True,18438.5,Credit Card
+CUST00043,Ethan,Jackson,ethan.jackson42@example.com,+44-7924-273580,Prefer not to say,69.0,Sweden,City_6,Enterprise,2023-07-12 15:43:16,True,29239.12,Bank Transfer
+CUST00044,David,Anderson,david.anderson43@example.com,,Non-binary,74.0,Spain,City_3,Enterprise,2023-06-19 07:35:55,True,31797.08,Debit Card
+CUST00045,Jennifer,Garcia,jennifer.garcia44@example.com,+44-7044-530816,Non-binary,20.0,Belgium,City_15,Enterprise,2024-07-26 20:32:16,True,1148.18,Credit Card
+CUST00046,Charles,Ramirez,charles.ramirez45@example.com,+44-7373-809217,Non-binary,54.0,France,City_34,Startup,2023-02-15 22:03:09,True,33345.1,PayPal
+CUST00047,Logan,Miller,logan.miller46@example.com,+44-7736-349068,Male,68.0,France,City_27,Startup,2022-03-09 11:56:59,True,9312.78,Debit Card
+CUST00048,Olivia,Miller,olivia.miller47@example.com,+44-7992-565776,Non-binary,24.0,Belgium,City_45,Individual,2023-12-15 16:36:03,True,48072.98,PayPal
+CUST00049,Jennifer,Lewis,jennifer.lewis48@example.com,+44-7625-398768,Non-binary,38.0,Belgium,City_24,Startup,2024-04-13 00:01:56,True,7858.81,Bank Transfer
+CUST00050,Jessica,Hernandez,jessica.hernandez49@example.com,+44-7770-884897,Female,26.0,United Kingdom,City_30,Individual,2022-07-13 21:51:23,True,21023.89,Credit Card
+CUST00051,Karen,Martin,karen.martin50@example.com,+44-7802-570735,Male,56.0,United States,City_48,Individual,2023-08-12 00:47:04,True,4724.81,Debit Card
+CUST00052,Joseph,Johnson,joseph.johnson51@example.com,+44-7239-659951,Male,35.0,Spain,City_6,Individual,2022-05-03 09:53:03,True,49845.28,Debit Card
+CUST00053,Richard,Williams,richard.williams52@example.com,+44-7244-424500,Prefer not to say,21.0,Sweden,City_38,Enterprise,2024-05-07 13:33:59,True,25358.65,Debit Card
+CUST00054,Barbara,Lee,barbara.lee53@example.com,,Non-binary,,United States,City_7,SMB,2023-04-01 10:28:42,True,29971.56,Bank Transfer
+CUST00055,Mary,Brown,mary.brown54@example.com,+44-7803-591798,Female,31.0,Belgium,City_33,Startup,2024-09-03 13:23:25,True,3820.29,Credit Card
+CUST00056,John,Jackson,john.jackson55@example.com,+44-7925-975679,Prefer not to say,67.0,Belgium,City_9,Individual,2024-08-18 20:05:15,False,37623.04,Credit Card
+CUST00057,Jessica,Thompson,jessica.thompson56@example.com,+44-7198-485709,Non-binary,26.0,United Kingdom,City_41,SMB,2023-07-16 18:43:51,True,10890.33,Bank Transfer
+CUST00058,Ethan,White,ethan.white57@example.com,+44-7694-698128,Male,43.0,Spain,City_26,Individual,2024-06-15 21:14:53,True,44953.69,PayPal
+CUST00059,Robert,Ramirez,robert.ramirez58@example.com,+44-7451-584106,Non-binary,70.0,Spain,City_5,Enterprise,2022-10-26 17:02:17,True,10654.41,Debit Card
+CUST00060,Amelia,Martinez,amelia.martinez59@example.com,+44-7787-395459,Non-binary,19.0,Italy,City_38,Individual,2022-04-19 01:12:14,True,9939.04,PayPal
+CUST00061,Lucas,Thomas,lucas.thomas60@example.com,+44-7796-500422,Female,37.0,Germany,City_37,Startup,2022-03-13 04:27:24,True,2309.21,Bank Transfer
+CUST00062,Richard,King,richard.king61@example.com,+44-7514-653081,Female,45.0,United States,City_4,SMB,2024-10-24 05:41:00,True,23867.31,PayPal
+CUST00063,Aiden,Clark,aiden.clark62@example.com,+44-7428-269930,Female,64.0,Germany,City_28,Enterprise,2022-12-21 00:39:48,False,28459.64,PayPal
+CUST00064,Harper,Lopez,harper.lopez63@example.com,+44-7836-309398,Prefer not to say,24.0,Australia,City_43,Individual,2023-03-26 13:09:54,True,3752.58,Bank Transfer
+CUST00065,Sophia,Hernandez,sophia.hernandez64@example.com,+44-7820-734035,Female,,France,City_9,Startup,2022-05-04 22:51:37,True,38888.62,Debit Card
+CUST00066,Jessica,Lopez,jessica.lopez65@example.com,+44-7141-362147,Prefer not to say,25.0,Netherlands,City_16,Startup,2022-12-28 15:04:23,True,22937.8,PayPal
+CUST00067,Barbara,Garcia,barbara.garcia66@example.com,+44-7053-772324,Non-binary,64.0,Netherlands,City_19,Enterprise,2022-06-06 21:36:22,True,26457.32,Credit Card
+CUST00068,James,Harris,james.harris67@example.com,+44-7492-489244,Prefer not to say,52.0,Spain,City_17,Startup,2023-08-14 12:07:58,True,22317.76,PayPal
+CUST00069,Michael,Thomas,michael.thomas68@example.com,+44-7567-207573,Prefer not to say,31.0,Sweden,City_21,Startup,2023-03-08 19:36:25,False,20337.77,PayPal
+CUST00070,Mia,Young,mia.young69@example.com,+44-7728-986982,Female,,Germany,City_26,Startup,2023-12-06 08:21:40,True,28202.2,Credit Card
+CUST00071,Joseph,Martinez,joseph.martinez70@example.com,+44-7528-992512,Female,53.0,Italy,,Startup,2024-09-14 12:02:01,False,8184.39,Debit Card
+CUST00072,Elizabeth,Anderson,elizabeth.anderson71@example.com,+44-7127-398910,Male,67.0,Sweden,City_48,Individual,2023-07-21 17:55:46,False,9505.44,Credit Card
+CUST00073,Evelyn,Robinson,evelyn.robinson72@example.com,+44-7085-900185,Prefer not to say,57.0,Australia,City_21,Enterprise,2022-09-10 16:11:03,True,43158.39,Debit Card
+CUST00074,Amelia,Taylor,amelia.taylor73@example.com,+44-7164-386042,Non-binary,21.0,Netherlands,City_21,SMB,2023-07-30 01:20:48,True,47332.72,Bank Transfer
+CUST00075,Patricia,Robinson,patricia.robinson74@example.com,+44-7460-638289,Male,19.0,United States,City_29,SMB,2023-07-06 21:27:06,True,18978.81,Bank Transfer
+CUST00076,Abigail,Taylor,abigail.taylor75@example.com,+44-7150-971415,Male,23.0,Belgium,City_18,Startup,2022-11-22 10:59:17,True,13901.86,PayPal
+CUST00077,Jessica,Smith,jessica.smith76@example.com,+44-7447-196168,Male,71.0,United States,City_15,Individual,2024-11-07 01:56:29,True,32377.98,PayPal
+CUST00078,Linda,Robinson,linda.robinson77@example.com,+44-7969-332823,Female,59.0,Belgium,City_5,Startup,2023-02-19 17:39:16,True,20732.34,Bank Transfer
+CUST00079,Amelia,Jackson,amelia.jackson78@example.com,+44-7836-573041,Female,21.0,United States,City_13,Startup,2024-11-27 20:30:14,True,1756.62,Credit Card
+CUST00080,William,Hernandez,william.hernandez79@example.com,+44-7905-466566,Female,71.0,Germany,City_9,Individual,2024-10-03 16:30:37,True,8229.55,Bank Transfer
+CUST00081,Amelia,Jones,amelia.jones80@example.com,+44-7952-127965,Non-binary,46.0,Netherlands,City_50,Enterprise,2022-04-21 22:04:42,False,35940.63,Debit Card
+CUST00082,Evelyn,Lewis,evelyn.lewis81@example.com,+44-7424-155843,Prefer not to say,35.0,Netherlands,City_50,SMB,2024-08-04 06:02:59,True,33116.74,PayPal
+CUST00083,Abigail,Thompson,abigail.thompson82@example.com,+44-7405-626392,Male,43.0,Sweden,City_38,Individual,2024-09-13 09:42:23,False,1841.25,Credit Card
+CUST00084,Liam,Martin,liam.martin83@example.com,+44-7382-347231,Female,61.0,United States,City_7,SMB,2022-09-23 20:30:40,True,11487.62,PayPal
+CUST00085,Mason,Ramirez,mason.ramirez84@example.com,+44-7395-185569,Prefer not to say,51.0,France,City_10,Individual,2024-04-09 18:10:40,True,11938.2,Bank Transfer
+CUST00086,Logan,Taylor,logan.taylor85@example.com,+44-7383-335445,Male,27.0,Italy,City_7,Individual,2023-01-16 07:12:46,True,33758.69,Credit Card
+CUST00087,Mia,Robinson,mia.robinson86@example.com,+44-7028-434165,Prefer not to say,53.0,United States,City_11,Startup,2022-09-11 20:05:11,True,1475.67,Bank Transfer
+CUST00088,Abigail,Martin,abigail.martin87@example.com,+44-7953-203896,Male,31.0,United States,City_29,Enterprise,2023-12-20 02:18:35,False,5653.37,Debit Card
+CUST00089,Mason,Gonzalez,mason.gonzalez88@example.com,+44-7859-849421,Prefer not to say,48.0,Germany,City_30,SMB,2023-08-13 11:07:27,True,40095.85,Bank Transfer
+CUST00090,David,Harris,david.harris89@example.com,+44-7665-451577,Female,65.0,France,City_21,Enterprise,2023-02-24 08:23:03,False,9337.96,Credit Card
+CUST00091,Ethan,Walker,ethan.walker90@example.com,+44-7810-253143,Prefer not to say,32.0,Netherlands,,Startup,2024-09-21 04:55:13,True,32810.93,Bank Transfer
+CUST00092,Mason,Miller,mason.miller91@example.com,+44-7140-140163,Prefer not to say,25.0,Germany,City_8,Individual,2024-05-15 04:35:29,True,12290.05,PayPal
+CUST00093,Thomas,Thomas,thomas.thomas92@example.com,+44-7293-970068,Male,31.0,Spain,City_35,SMB,2022-12-08 03:50:49,True,5422.35,PayPal
+CUST00094,Jessica,Harris,jessica.harris93@example.com,+44-7483-829884,Prefer not to say,40.0,Italy,City_23,Enterprise,2024-11-29 12:16:09,False,12537.02,Credit Card
+CUST00095,Sarah,Thompson,sarah.thompson94@example.com,+44-7851-245534,Non-binary,74.0,Germany,City_50,SMB,2023-05-19 18:08:11,False,36252.21,PayPal
+CUST00096,Evelyn,Jackson,evelyn.jackson95@example.com,+44-7777-839808,Male,57.0,France,City_14,SMB,2022-03-28 21:31:04,True,42856.98,Debit Card
+CUST00097,Harper,Jackson,harper.jackson96@example.com,+44-7480-570392,Prefer not to say,38.0,Netherlands,City_29,SMB,2022-12-22 19:31:51,True,41595.88,Debit Card
+CUST00098,Jessica,Johnson,jessica.johnson97@example.com,+44-7630-105506,Non-binary,33.0,France,City_20,Enterprise,2022-02-19 20:47:01,True,20160.58,Credit Card
+CUST00099,Sarah,Sanchez,sarah.sanchez98@example.com,+44-7927-183074,Male,62.0,Australia,City_30,SMB,2023-05-06 00:56:31,True,33570.21,Bank Transfer
+CUST00100,Mason,Moore,mason.moore99@example.com,+44-7019-368355,Female,35.0,Belgium,City_17,Enterprise,2023-09-16 04:30:26,False,10646.72,PayPal
+CUST00101,Robert,Smith,robert.smith100@example.com,+44-7220-975522,Male,64.0,Belgium,City_8,Individual,2023-02-20 22:06:12,False,15010.81,PayPal
+CUST00102,Charles,Brown,charles.brown101@example.com,+44-7153-675462,Male,,United States,City_6,Enterprise,2022-04-13 19:41:24,True,44868.62,Bank Transfer
+CUST00103,Jessica,Young,jessica.young102@example.com,+44-7962-862560,Prefer not to say,41.0,France,City_11,Startup,2022-11-24 18:00:37,True,1143.6,Bank Transfer
+CUST00104,Sarah,Jackson,sarah.jackson103@example.com,+44-7623-653408,Non-binary,43.0,United States,City_44,SMB,2024-05-31 02:00:17,True,4732.67,Bank Transfer
+CUST00105,Olivia,Anderson,olivia.anderson104@example.com,+44-7433-216587,Male,42.0,Belgium,City_20,Startup,2023-05-04 20:02:30,True,10790.37,Bank Transfer
+CUST00106,Liam,Thompson,liam.thompson105@example.com,+44-7794-402096,Male,62.0,Belgium,,Startup,2022-11-27 07:17:31,False,1813.34,PayPal
+CUST00107,Benjamin,Anderson,benjamin.anderson106@example.com,,Male,58.0,France,City_45,Individual,2024-10-15 04:31:28,True,9481.05,Debit Card
+CUST00108,Jennifer,Gonzalez,jennifer.gonzalez107@example.com,+44-7124-150068,Prefer not to say,46.0,Sweden,,Individual,2024-02-15 12:41:25,False,29360.56,Credit Card
+CUST00109,William,Taylor,william.taylor108@example.com,+44-7244-540218,Male,32.0,Australia,City_3,Enterprise,2023-09-07 14:13:34,True,21360.52,Credit Card
+CUST00110,Barbara,Rodriguez,barbara.rodriguez109@example.com,+44-7654-932463,Non-binary,62.0,France,City_14,Enterprise,2024-09-25 15:15:17,False,44687.25,Bank Transfer
+CUST00111,Joseph,Miller,joseph.miller110@example.com,+44-7637-579318,Prefer not to say,18.0,Australia,City_21,SMB,2023-12-14 19:14:13,True,40963.46,Debit Card
+CUST00112,Aiden,Williams,aiden.williams111@example.com,+44-7064-216242,Female,42.0,France,City_10,Startup,2022-08-10 22:38:20,True,17419.96,PayPal
+CUST00113,Barbara,Martin,barbara.martin112@example.com,+44-7856-624108,Female,24.0,Sweden,City_6,Individual,2023-02-16 11:26:54,False,13341.46,PayPal
+CUST00114,Susan,Lewis,susan.lewis113@example.com,+44-7611-662093,Prefer not to say,26.0,Italy,City_46,Individual,2022-08-05 21:47:44,True,19294.77,Credit Card
+CUST00115,Robert,Williams,robert.williams114@example.com,+44-7016-762652,Non-binary,41.0,France,City_16,SMB,2023-01-19 02:56:23,True,29719.6,Bank Transfer
+CUST00116,Lucas,White,lucas.white115@example.com,+44-7527-702980,Prefer not to say,18.0,France,City_23,Individual,2024-05-22 01:19:15,False,13769.15,Debit Card
+CUST00117,Lucas,Rodriguez,lucas.rodriguez116@example.com,+44-7247-853448,Prefer not to say,61.0,Netherlands,City_26,Startup,2024-04-17 06:31:47,False,31395.37,Credit Card
+CUST00118,Olivia,Garcia,olivia.garcia117@example.com,+44-7147-405420,Prefer not to say,,Sweden,City_33,Startup,2023-02-13 03:43:01,True,20765.88,Debit Card
+CUST00119,Benjamin,Jackson,benjamin.jackson118@example.com,+44-7439-101640,Prefer not to say,41.0,United States,City_4,SMB,2024-06-27 02:56:43,True,27826.34,Bank Transfer
+CUST00120,Amelia,Lee,amelia.lee119@example.com,+44-7629-469954,Male,28.0,United Kingdom,City_44,Startup,2023-10-28 13:10:14,True,22088.26,Bank Transfer
+CUST00121,Lucas,Clark,lucas.clark120@example.com,,Female,68.0,Netherlands,City_20,Enterprise,2024-06-25 11:41:03,True,15076.06,Credit Card
+CUST00122,Patricia,Lopez,patricia.lopez121@example.com,+44-7426-296412,Non-binary,,United Kingdom,City_17,Startup,2023-09-13 10:43:48,True,47448.44,Bank Transfer
+CUST00123,Susan,Gonzalez,susan.gonzalez122@example.com,+44-7680-800674,Male,,Sweden,City_12,Enterprise,2023-07-17 08:12:20,True,38298.49,Debit Card
+CUST00124,Lucas,Rodriguez,lucas.rodriguez123@example.com,+44-7087-648913,Female,52.0,France,City_2,Individual,2022-12-07 16:52:13,True,7435.6,Debit Card
+CUST00125,Aiden,White,aiden.white124@example.com,+44-7998-478120,Prefer not to say,52.0,Spain,City_26,Enterprise,2022-08-03 21:22:52,True,43489.16,Credit Card
+CUST00126,Mary,King,mary.king125@example.com,+44-7069-651613,Female,,Belgium,,SMB,2024-03-02 12:31:01,True,24627.84,Bank Transfer
+CUST00127,Aiden,Allen,aiden.allen126@example.com,,Female,22.0,Australia,City_36,SMB,2024-02-06 15:36:14,True,44780.34,PayPal
+CUST00128,Ethan,Moore,ethan.moore127@example.com,+44-7805-632280,Male,59.0,Australia,City_48,SMB,2022-05-22 05:20:54,True,40092.84,Bank Transfer
+CUST00129,James,Hernandez,james.hernandez128@example.com,+44-7567-121322,Male,56.0,Sweden,City_36,SMB,2022-03-15 04:37:32,True,21548.07,Credit Card
+CUST00130,Noah,Taylor,noah.taylor129@example.com,+44-7399-592972,Non-binary,58.0,Belgium,City_16,SMB,2022-06-20 08:00:57,True,1612.23,Credit Card
+CUST00131,Karen,Walker,karen.walker130@example.com,,Prefer not to say,45.0,Sweden,City_7,Startup,2022-08-26 10:20:14,True,13799.53,PayPal
+CUST00132,Aiden,Jackson,aiden.jackson131@example.com,+44-7396-491435,Prefer not to say,24.0,Belgium,City_30,Individual,2024-09-01 16:53:02,False,27310.89,Credit Card
+CUST00133,Lucas,Perez,lucas.perez132@example.com,+44-7259-883618,Prefer not to say,26.0,Sweden,City_7,Enterprise,2022-09-06 12:33:40,True,31857.17,Credit Card
+CUST00134,Benjamin,Davis,benjamin.davis133@example.com,+44-7016-474440,Female,25.0,Sweden,City_9,Enterprise,2024-11-23 02:10:42,True,13265.44,PayPal
+CUST00135,Benjamin,Robinson,benjamin.robinson134@example.com,+44-7807-170841,Female,29.0,France,City_8,Individual,2023-10-18 19:15:51,True,7398.13,PayPal
+CUST00136,Joseph,Jones,joseph.jones135@example.com,+44-7353-352838,Prefer not to say,51.0,Germany,City_1,SMB,2024-07-15 11:44:25,True,41829.05,Debit Card
+CUST00137,Harper,Martinez,harper.martinez136@example.com,+44-7750-789023,Non-binary,50.0,United States,City_4,SMB,2022-04-09 16:29:04,True,49227.91,Credit Card
+CUST00138,Joseph,Anderson,joseph.anderson137@example.com,+44-7643-208699,Female,65.0,United Kingdom,City_50,Enterprise,2023-08-21 17:09:54,True,26521.66,PayPal
+CUST00139,Sarah,Sanchez,sarah.sanchez138@example.com,+44-7790-710169,Non-binary,72.0,Spain,City_15,SMB,2023-08-16 19:47:53,True,8998.12,Debit Card
+CUST00140,Mia,White,mia.white139@example.com,,Female,40.0,Italy,City_9,Startup,2024-07-14 16:19:50,True,13979.21,Credit Card
+CUST00141,Harper,Garcia,harper.garcia140@example.com,+44-7340-239890,Male,41.0,United Kingdom,City_13,Startup,2023-12-29 02:09:52,True,1410.34,PayPal
+CUST00142,Mary,Sanchez,mary.sanchez141@example.com,+44-7045-469412,Male,54.0,Italy,City_26,Startup,2024-04-01 22:48:45,False,45757.79,Credit Card
+CUST00143,Aiden,Smith,aiden.smith142@example.com,+44-7559-454992,Prefer not to say,52.0,Spain,City_24,Individual,2023-01-26 13:23:51,True,6328.68,Debit Card
+CUST00144,Olivia,Taylor,olivia.taylor143@example.com,+44-7833-774020,Male,61.0,Australia,City_44,Individual,2024-05-09 09:45:22,True,29037.57,Bank Transfer
+CUST00145,Sophia,Davis,sophia.davis144@example.com,+44-7179-970720,Female,57.0,Italy,City_41,Startup,2022-01-18 20:02:36,True,14065.73,Credit Card
+CUST00146,David,Robinson,david.robinson145@example.com,+44-7797-817941,Female,39.0,France,City_42,Individual,2024-11-22 18:48:13,False,27931.81,Credit Card
+CUST00147,Amelia,White,amelia.white146@example.com,+44-7475-829168,Male,44.0,Sweden,City_6,Startup,2022-06-27 22:47:54,True,32745.31,Credit Card
+CUST00148,William,Taylor,william.taylor147@example.com,+44-7490-762423,Male,52.0,United States,City_38,SMB,2024-11-25 00:00:16,True,41572.22,Credit Card
+CUST00149,Benjamin,Harris,benjamin.harris148@example.com,+44-7186-950916,Male,18.0,Sweden,City_38,Individual,2024-04-14 03:42:17,False,10717.85,PayPal
+CUST00150,Mary,White,mary.white149@example.com,+44-7138-166165,Prefer not to say,52.0,Australia,City_17,Startup,2023-02-19 11:57:50,False,1044.29,Bank Transfer
+CUST00151,Sophia,Miller,sophia.miller150@example.com,+44-7733-913894,Male,54.0,Australia,City_5,Individual,2024-09-22 16:47:16,False,7275.84,Credit Card
+CUST00152,Mary,Anderson,mary.anderson151@example.com,+44-7966-579911,Female,64.0,Germany,City_2,Enterprise,2023-06-13 10:39:39,True,45050.92,PayPal
+CUST00153,Jennifer,Walker,jennifer.walker152@example.com,+44-7037-407696,Male,31.0,United States,City_5,Enterprise,2022-06-23 06:57:59,True,43757.56,Bank Transfer
+CUST00154,Mia,Johnson,mia.johnson153@example.com,+44-7206-145934,Prefer not to say,20.0,Germany,City_13,Startup,2023-04-01 22:28:40,True,30071.95,Debit Card
+CUST00155,William,Lee,william.lee154@example.com,+44-7810-309159,Prefer not to say,18.0,Italy,City_42,Startup,2023-11-07 09:13:24,True,30225.58,Debit Card
+CUST00156,Amelia,Anderson,amelia.anderson155@example.com,+44-7907-143941,Female,22.0,Australia,City_29,Startup,2022-09-03 16:32:54,True,33419.32,Debit Card
+CUST00157,Elizabeth,Jones,elizabeth.jones156@example.com,+44-7323-425138,Female,43.0,Netherlands,City_9,Enterprise,2023-12-06 20:02:45,True,9180.88,Debit Card
+CUST00158,Patricia,Robinson,patricia.robinson157@example.com,+44-7527-517568,Male,72.0,Australia,City_6,Individual,2022-01-06 00:59:38,False,45763.39,Debit Card
+CUST00159,Thomas,Martin,thomas.martin158@example.com,,Female,31.0,United Kingdom,City_22,Enterprise,2023-02-14 03:51:19,True,21229.14,Bank Transfer
+CUST00160,Aiden,Clark,aiden.clark159@example.com,+44-7484-365618,Non-binary,56.0,Sweden,City_8,Startup,2024-02-17 15:12:10,True,19465.36,Credit Card
+CUST00161,Liam,Davis,liam.davis160@example.com,+44-7037-889882,Female,44.0,Australia,City_3,Startup,2022-10-05 12:37:29,True,26186.43,Debit Card
+CUST00162,Susan,Rodriguez,susan.rodriguez161@example.com,+44-7662-300386,Non-binary,26.0,Spain,City_30,Startup,2024-02-28 15:44:40,True,2824.82,Credit Card
+CUST00163,Amelia,Williams,amelia.williams162@example.com,+44-7292-474314,Non-binary,32.0,Belgium,City_4,Startup,2022-06-15 07:16:58,True,8731.03,Credit Card
+CUST00164,Liam,Williams,liam.williams163@example.com,+44-7882-918771,Female,32.0,Germany,City_11,Startup,2024-08-29 08:52:51,True,37032.66,Credit Card
+CUST00165,Olivia,Martin,olivia.martin164@example.com,+44-7048-787584,Non-binary,43.0,Spain,City_37,Startup,2023-04-09 14:49:41,True,4598.53,Credit Card
+CUST00166,Aiden,Young,aiden.young165@example.com,+44-7339-386488,Female,59.0,Italy,City_28,SMB,2024-09-19 13:45:49,True,30356.03,Credit Card
+CUST00167,Sarah,Davis,sarah.davis166@example.com,+44-7127-938171,Female,30.0,United Kingdom,City_47,SMB,2024-02-28 15:02:38,True,12644.78,Bank Transfer
+CUST00168,Lucas,Miller,lucas.miller167@example.com,+44-7376-558176,Prefer not to say,68.0,Sweden,City_26,SMB,2024-08-04 00:03:18,True,19770.13,Credit Card
+CUST00169,Thomas,Thomas,thomas.thomas168@example.com,+44-7910-519453,Non-binary,49.0,Italy,City_32,Enterprise,2022-11-05 23:56:36,False,14790.34,Bank Transfer
+CUST00170,Jennifer,Rodriguez,jennifer.rodriguez169@example.com,,Non-binary,56.0,Netherlands,City_2,Individual,2022-08-26 10:15:39,True,18105.8,Bank Transfer
+CUST00171,Ethan,Harris,ethan.harris170@example.com,+44-7916-505426,Male,66.0,Germany,City_25,Startup,2023-08-04 20:31:07,True,36092.77,Credit Card
+CUST00172,Mary,Robinson,mary.robinson171@example.com,+44-7347-295892,Female,,Sweden,City_44,SMB,2022-09-08 22:59:04,False,15207.52,Bank Transfer
+CUST00173,Benjamin,White,benjamin.white172@example.com,+44-7508-825686,Prefer not to say,49.0,Germany,City_28,Enterprise,2024-04-17 21:30:27,True,28537.03,Debit Card
+CUST00174,Patricia,Clark,patricia.clark173@example.com,+44-7509-485191,Prefer not to say,21.0,Spain,,Individual,2024-04-03 21:01:04,False,24064.49,Debit Card
+CUST00175,Noah,Martinez,noah.martinez174@example.com,+44-7946-936020,Male,47.0,Spain,,Startup,2022-01-01 21:19:18,True,33351.72,Debit Card
+CUST00176,Joseph,Clark,joseph.clark175@example.com,+44-7531-379676,Non-binary,54.0,United States,City_14,Startup,2024-07-19 10:16:21,False,46873.07,Credit Card
+CUST00177,Robert,Miller,robert.miller176@example.com,+44-7820-186624,Prefer not to say,40.0,Netherlands,City_12,Individual,2023-05-19 13:24:49,True,36762.32,Debit Card
+CUST00178,John,Young,john.young177@example.com,+44-7744-545120,Non-binary,56.0,United States,City_18,Individual,2024-01-30 00:32:28,False,11139.55,PayPal
+CUST00179,Mary,Clark,mary.clark178@example.com,+44-7080-551524,Prefer not to say,62.0,Belgium,City_18,Individual,2022-01-31 06:08:44,True,2043.57,PayPal
+CUST00180,Jessica,Moore,jessica.moore179@example.com,+44-7616-962287,Prefer not to say,32.0,France,City_29,Enterprise,2022-06-23 18:43:51,False,13482.07,PayPal
+CUST00181,Richard,Williams,richard.williams180@example.com,+44-7184-671971,Female,60.0,United States,City_10,SMB,2023-07-18 20:54:13,True,29956.36,Debit Card
+CUST00182,Mary,White,mary.white181@example.com,+44-7300-436814,Non-binary,46.0,France,City_3,Startup,2023-04-23 16:57:27,True,3045.58,Bank Transfer
+CUST00183,Barbara,Wilson,barbara.wilson182@example.com,+44-7105-183958,Prefer not to say,53.0,Spain,City_40,SMB,2023-01-07 23:25:45,False,25070.13,PayPal
+CUST00184,Jessica,Lewis,jessica.lewis183@example.com,+44-7335-793024,Female,30.0,Spain,City_40,Individual,2022-03-31 23:36:24,True,30043.72,Bank Transfer
+CUST00185,William,Lewis,william.lewis184@example.com,+44-7302-421384,Prefer not to say,49.0,United Kingdom,City_40,Startup,2023-01-10 04:20:37,True,17045.07,Bank Transfer
+CUST00186,Ethan,Thomas,ethan.thomas185@example.com,+44-7456-731894,Female,24.0,United States,City_16,Startup,2024-05-31 08:35:59,True,38660.15,Credit Card
+CUST00187,Linda,White,linda.white186@example.com,+44-7734-546815,Female,68.0,Netherlands,City_42,SMB,2022-05-03 08:16:32,True,5776.61,PayPal
+CUST00188,Susan,Miller,susan.miller187@example.com,,Non-binary,39.0,Australia,City_19,SMB,2022-05-14 01:23:31,True,4219.32,Credit Card
+CUST00189,Amelia,White,amelia.white188@example.com,+44-7454-468623,Female,45.0,Italy,City_32,Startup,2024-01-25 23:02:15,True,36545.34,Credit Card
+CUST00190,Thomas,Thompson,thomas.thompson189@example.com,+44-7457-144412,Prefer not to say,19.0,United States,City_27,Enterprise,2022-04-18 12:25:46,False,25026.82,Credit Card
+CUST00191,Emma,Brown,emma.brown190@example.com,+44-7744-469685,Male,59.0,Australia,City_36,Individual,2024-04-07 12:43:31,True,34575.92,Debit Card
+CUST00192,David,Sanchez,david.sanchez191@example.com,+44-7629-556068,Prefer not to say,62.0,France,City_31,SMB,2022-07-15 08:41:30,True,22023.95,Credit Card
+CUST00193,Linda,Moore,linda.moore192@example.com,+44-7281-770532,Prefer not to say,74.0,Netherlands,City_4,Startup,2022-07-19 10:46:50,False,12696.9,Bank Transfer
+CUST00194,David,Gonzalez,david.gonzalez193@example.com,+44-7810-160144,Female,70.0,Italy,City_6,SMB,2024-10-21 21:17:36,False,41045.56,PayPal
+CUST00195,Karen,Davis,karen.davis194@example.com,+44-7076-803787,Prefer not to say,23.0,Italy,City_18,Startup,2024-01-09 07:48:40,True,40071.09,Bank Transfer
+CUST00196,Michael,Robinson,michael.robinson195@example.com,+44-7652-525942,Female,45.0,United States,City_25,Enterprise,2024-05-04 02:09:49,True,34887.48,PayPal
+CUST00197,Mary,Garcia,mary.garcia196@example.com,+44-7372-638009,Non-binary,45.0,Italy,City_9,SMB,2022-09-14 12:22:45,True,13971.18,Debit Card
+CUST00198,Karen,Wilson,karen.wilson197@example.com,+44-7820-886325,Female,61.0,Australia,City_27,Startup,2023-02-16 18:01:38,True,29716.42,PayPal
+CUST00199,Aiden,Johnson,aiden.johnson198@example.com,+44-7695-267758,Non-binary,61.0,Germany,City_13,SMB,2024-03-30 17:06:16,True,18368.21,PayPal
+CUST00200,Sophia,Brown,sophia.brown199@example.com,+44-7975-132653,Male,37.0,France,City_42,Startup,2024-07-31 07:27:37,True,5033.31,PayPal
+CUST00201,Richard,Perez,richard.perez200@example.com,+44-7146-989894,Prefer not to say,47.0,Belgium,City_34,Individual,2023-10-20 07:43:32,True,45907.02,PayPal
+CUST00202,Robert,Thomas,robert.thomas201@example.com,+44-7622-811027,Non-binary,28.0,United Kingdom,City_16,Startup,2022-11-26 00:24:33,True,7272.52,Bank Transfer
+CUST00203,Jessica,Rodriguez,jessica.rodriguez202@example.com,+44-7800-559457,Male,72.0,Italy,City_41,Startup,2024-04-17 18:24:55,False,47536.75,PayPal
+CUST00204,Michael,Wilson,michael.wilson203@example.com,+44-7035-232361,Female,45.0,France,City_35,Startup,2022-11-09 11:27:18,False,22577.29,Credit Card
+CUST00205,Karen,Jones,karen.jones204@example.com,+44-7068-347459,Male,42.0,France,City_2,Startup,2023-04-30 05:37:32,True,9664.08,PayPal
+CUST00206,Linda,Wilson,linda.wilson205@example.com,+44-7797-776502,Non-binary,56.0,Spain,City_25,Individual,2023-09-12 19:30:39,True,27324.1,Credit Card
+CUST00207,John,Wilson,john.wilson206@example.com,,Prefer not to say,50.0,France,City_46,Enterprise,2024-11-09 10:18:17,True,43710.82,Debit Card
+CUST00208,Noah,Anderson,noah.anderson207@example.com,+44-7392-694799,Male,18.0,Netherlands,City_23,Individual,2024-10-06 13:12:36,False,36745.13,Credit Card
+CUST00209,Benjamin,Perez,benjamin.perez208@example.com,+44-7033-734487,Male,74.0,Spain,City_31,Enterprise,2023-08-04 02:07:31,True,40424.78,Bank Transfer
+CUST00210,Mia,Martinez,mia.martinez209@example.com,+44-7157-812048,Female,44.0,Belgium,City_35,Enterprise,2023-11-12 13:33:17,True,33109.78,Credit Card
+CUST00211,Emma,Smith,emma.smith210@example.com,+44-7460-488984,Female,74.0,Sweden,City_32,Individual,2024-03-15 00:37:33,False,34767.69,Bank Transfer
+CUST00212,Robert,Moore,robert.moore211@example.com,+44-7380-565504,Prefer not to say,69.0,France,City_23,SMB,2023-12-03 08:37:24,False,42535.18,Credit Card
+CUST00213,Logan,Martinez,logan.martinez212@example.com,+44-7781-180620,Female,30.0,United States,City_37,Enterprise,2022-07-07 23:21:48,False,12858.57,PayPal
+CUST00214,Olivia,Rodriguez,olivia.rodriguez213@example.com,+44-7587-244383,Non-binary,58.0,Italy,City_33,Individual,2023-01-21 02:35:28,True,24726.54,Debit Card
+CUST00215,James,Taylor,james.taylor214@example.com,+44-7542-484774,Non-binary,20.0,Belgium,,Startup,2022-12-16 01:19:26,True,11449.87,Bank Transfer
+CUST00216,Lucas,Lopez,lucas.lopez215@example.com,+44-7407-429657,Male,56.0,Belgium,City_25,Individual,2022-04-10 11:03:30,True,49389.57,Bank Transfer
+CUST00217,Harper,Davis,harper.davis216@example.com,+44-7665-392227,Female,23.0,Sweden,City_18,Enterprise,2023-06-10 04:44:36,False,47230.94,PayPal
+CUST00218,Michael,Johnson,michael.johnson217@example.com,,Female,25.0,Germany,City_12,SMB,2022-02-02 16:12:50,False,2451.63,PayPal
+CUST00219,Mia,Rodriguez,mia.rodriguez218@example.com,+44-7026-871411,Male,44.0,Germany,City_2,SMB,2024-07-02 21:44:19,True,35425.97,Credit Card
+CUST00220,Emma,Smith,emma.smith219@example.com,,Prefer not to say,26.0,Belgium,City_21,SMB,2024-05-10 11:41:28,True,46299.79,Bank Transfer
+CUST00221,Amelia,Thompson,amelia.thompson220@example.com,+44-7530-505785,Female,,Australia,City_39,Startup,2022-12-24 11:17:56,True,9438.48,Credit Card
+CUST00222,Barbara,Thomas,barbara.thomas221@example.com,+44-7935-688956,Female,50.0,Italy,City_15,Individual,2024-07-03 02:38:15,False,28613.29,PayPal
+CUST00223,Mia,Lee,mia.lee222@example.com,+44-7120-374492,Prefer not to say,68.0,Netherlands,,Individual,2022-12-09 02:17:57,False,45816.67,Bank Transfer
+CUST00224,Elizabeth,Johnson,elizabeth.johnson223@example.com,+44-7793-372933,Female,59.0,Sweden,City_50,SMB,2022-01-12 04:05:38,True,2180.33,Debit Card
+CUST00225,Evelyn,Lopez,evelyn.lopez224@example.com,+44-7720-567951,Non-binary,61.0,Sweden,City_18,Startup,2022-04-21 06:48:50,True,35022.3,Debit Card
+CUST00226,Sarah,Taylor,sarah.taylor225@example.com,+44-7219-741599,Non-binary,41.0,Netherlands,City_4,SMB,2024-09-07 09:13:25,True,15218.78,Bank Transfer
+CUST00227,Benjamin,Brown,benjamin.brown226@example.com,+44-7292-827691,Prefer not to say,32.0,United States,City_31,Enterprise,2022-04-02 10:58:23,False,46257.61,Bank Transfer
+CUST00228,Ethan,Rodriguez,ethan.rodriguez227@example.com,+44-7938-615060,Prefer not to say,71.0,United Kingdom,City_34,Individual,2022-12-22 15:34:06,False,48567.38,PayPal
+CUST00229,Amelia,Clark,amelia.clark228@example.com,+44-7204-228594,Non-binary,49.0,Germany,City_23,Startup,2022-04-15 16:51:58,False,47241.19,Bank Transfer
+CUST00230,Mia,King,mia.king229@example.com,+44-7138-994253,Non-binary,49.0,Sweden,City_50,SMB,2022-02-18 19:09:35,True,23973.6,Bank Transfer
+CUST00231,Sarah,Davis,sarah.davis230@example.com,+44-7075-574001,Non-binary,41.0,Netherlands,City_38,Startup,2023-05-29 07:16:01,True,43171.11,Debit Card
+CUST00232,Liam,Jones,liam.jones231@example.com,+44-7176-848022,Non-binary,58.0,Germany,City_15,Enterprise,2022-04-21 01:45:12,True,42305.2,PayPal
+CUST00233,Jessica,Walker,jessica.walker232@example.com,+44-7455-192055,Prefer not to say,,Australia,City_11,Enterprise,2024-03-09 17:07:46,True,16295.47,Credit Card
+CUST00234,Jennifer,Lewis,jennifer.lewis233@example.com,+44-7829-815054,Prefer not to say,66.0,Belgium,City_7,Individual,2023-01-05 17:27:21,False,41531.32,Bank Transfer
+CUST00235,Sarah,White,sarah.white234@example.com,+44-7990-986593,Male,66.0,Spain,City_16,Startup,2023-03-09 14:23:05,False,2331.88,PayPal
+CUST00236,Mason,Allen,mason.allen235@example.com,+44-7327-800280,Prefer not to say,69.0,Belgium,City_43,SMB,2024-11-05 05:17:57,False,30015.36,PayPal
+CUST00237,Jessica,Miller,jessica.miller236@example.com,+44-7355-844007,Non-binary,29.0,Spain,City_16,SMB,2024-01-25 01:33:51,False,11885.44,Debit Card
+CUST00238,Amelia,Lewis,amelia.lewis237@example.com,+44-7066-676713,Female,,Sweden,City_18,SMB,2022-11-29 19:19:37,True,6468.06,Bank Transfer
+CUST00239,Aiden,Allen,aiden.allen238@example.com,+44-7555-404466,Non-binary,19.0,Italy,City_35,Individual,2024-04-17 16:05:53,True,4309.18,Bank Transfer
+CUST00240,Olivia,Anderson,olivia.anderson239@example.com,+44-7912-414527,Non-binary,20.0,Netherlands,City_48,Enterprise,2022-07-25 12:56:35,False,34966.29,PayPal
+CUST00241,Mary,Williams,mary.williams240@example.com,+44-7871-265156,Prefer not to say,66.0,Italy,City_4,SMB,2024-06-06 02:01:46,False,17323.81,Bank Transfer
+CUST00242,Harper,King,harper.king241@example.com,+44-7728-844031,Male,54.0,Netherlands,City_49,Individual,2024-06-14 02:43:38,True,36375.96,Debit Card
+CUST00243,Liam,Martin,liam.martin242@example.com,+44-7949-834233,Female,66.0,Australia,City_15,Individual,2024-01-05 06:27:11,True,3735.14,Debit Card
+CUST00244,Elizabeth,Robinson,elizabeth.robinson243@example.com,+44-7653-282547,Female,73.0,United States,City_37,Individual,2023-01-13 11:35:37,True,16106.87,Debit Card
+CUST00245,Harper,Johnson,harper.johnson244@example.com,+44-7812-479052,Male,34.0,France,City_25,Individual,2024-01-05 17:42:33,False,27204.82,Bank Transfer
+CUST00246,Susan,Brown,susan.brown245@example.com,+44-7520-335134,Non-binary,66.0,United States,City_23,Individual,2023-09-25 08:17:43,True,39640.8,Bank Transfer
+CUST00247,Noah,Walker,noah.walker246@example.com,+44-7124-310743,Prefer not to say,19.0,Sweden,City_12,Individual,2022-10-23 18:59:46,True,16278.25,Debit Card
+CUST00248,Thomas,Sanchez,thomas.sanchez247@example.com,+44-7811-245622,Non-binary,19.0,Netherlands,City_12,Enterprise,2022-05-27 12:43:14,True,31481.62,Credit Card
+CUST00249,Olivia,Ramirez,olivia.ramirez248@example.com,+44-7242-928766,Female,45.0,United Kingdom,City_16,Enterprise,2022-05-31 13:50:33,True,44355.9,PayPal
+CUST00250,Sarah,Miller,sarah.miller249@example.com,+44-7505-127560,Female,71.0,United Kingdom,City_38,SMB,2024-10-20 16:39:27,True,30985.23,Credit Card
+CUST00251,Sarah,Young,sarah.young250@example.com,+44-7369-680933,Non-binary,40.0,Germany,City_21,Startup,2023-11-01 14:45:10,True,12031.49,Bank Transfer
+CUST00252,Abigail,Lewis,abigail.lewis251@example.com,+44-7586-486831,Female,54.0,Sweden,City_48,Enterprise,2023-07-05 09:10:14,True,1707.84,PayPal
+CUST00253,James,Jones,james.jones252@example.com,,Prefer not to say,49.0,United Kingdom,City_45,Startup,2023-10-21 00:09:20,True,43569.89,PayPal
+CUST00254,Evelyn,Garcia,evelyn.garcia253@example.com,+44-7564-236074,Female,50.0,Germany,City_23,SMB,2023-10-01 15:00:13,True,1552.84,Bank Transfer
+CUST00255,Richard,Lee,richard.lee254@example.com,+44-7626-190403,Prefer not to say,18.0,France,City_38,Enterprise,2023-12-27 11:56:29,True,43797.73,Credit Card
+CUST00256,Jennifer,Martinez,jennifer.martinez255@example.com,+44-7067-424314,Non-binary,36.0,Sweden,City_2,Enterprise,2022-03-26 03:38:53,False,26682.39,Credit Card
+CUST00257,Jessica,Jones,jessica.jones256@example.com,+44-7407-851759,Non-binary,19.0,Sweden,City_46,SMB,2024-11-12 00:50:59,True,46983.85,Credit Card
+CUST00258,Lucas,Rodriguez,lucas.rodriguez257@example.com,+44-7736-601916,Prefer not to say,70.0,United Kingdom,City_45,SMB,2024-10-12 02:35:10,True,40039.77,Credit Card
+CUST00259,Harper,Moore,harper.moore258@example.com,+44-7538-530749,Prefer not to say,61.0,Belgium,City_23,Startup,2024-09-30 19:19:38,False,49897.74,Debit Card
+CUST00260,Abigail,Lee,abigail.lee259@example.com,+44-7787-529322,Prefer not to say,43.0,Spain,City_37,Startup,2022-06-02 21:17:03,True,17860.23,PayPal
+CUST00261,Jessica,Harris,jessica.harris260@example.com,+44-7843-702826,Female,49.0,France,City_37,SMB,2022-04-05 03:48:15,True,38475.82,Credit Card
+CUST00262,Ethan,King,ethan.king261@example.com,+44-7075-231414,Non-binary,23.0,Italy,City_10,Enterprise,2023-09-18 10:48:33,True,20395.58,Bank Transfer
+CUST00263,Harper,Jackson,harper.jackson262@example.com,+44-7995-432427,Female,49.0,France,City_37,Individual,2023-06-12 02:07:04,True,24253.84,Debit Card
+CUST00264,Mason,Robinson,mason.robinson263@example.com,+44-7657-177767,Female,72.0,Italy,City_13,Startup,2022-06-19 17:50:41,True,31561.52,PayPal
+CUST00265,Mary,Allen,mary.allen264@example.com,+44-7460-588461,Prefer not to say,21.0,Germany,City_32,SMB,2023-01-22 06:34:48,True,43747.02,Bank Transfer
+CUST00266,Jennifer,Ramirez,jennifer.ramirez265@example.com,+44-7696-642491,Female,72.0,Netherlands,City_35,Enterprise,2022-10-25 14:59:44,True,49212.13,Debit Card
+CUST00267,Charles,Miller,charles.miller266@example.com,+44-7352-234568,Male,28.0,Italy,City_20,Enterprise,2022-10-23 11:30:07,True,38529.53,PayPal
+CUST00268,Joseph,Davis,joseph.davis267@example.com,+44-7899-969325,Male,73.0,Germany,City_12,Startup,2024-04-13 02:10:55,True,21179.46,Bank Transfer
+CUST00269,Sophia,Wilson,sophia.wilson268@example.com,+44-7798-678083,Male,34.0,Netherlands,City_32,Startup,2023-11-28 21:31:31,True,21357.17,PayPal
+CUST00270,Jessica,Ramirez,jessica.ramirez269@example.com,+44-7655-716338,Male,55.0,France,City_3,Individual,2022-08-06 18:22:29,True,37010.32,Debit Card
+CUST00271,Karen,Lewis,karen.lewis270@example.com,+44-7186-905077,Male,41.0,United Kingdom,City_6,Startup,2023-10-18 08:53:15,True,12319.47,Credit Card
+CUST00272,Emma,Anderson,emma.anderson271@example.com,+44-7989-235300,Prefer not to say,22.0,Belgium,City_4,Individual,2022-10-13 00:55:47,True,5968.47,Debit Card
+CUST00273,Ethan,Clark,ethan.clark272@example.com,+44-7443-627290,Female,69.0,Italy,City_15,SMB,2023-03-09 16:54:56,False,18053.8,Bank Transfer
+CUST00274,Abigail,Perez,abigail.perez273@example.com,+44-7932-158104,Female,51.0,Spain,City_39,Startup,2023-12-20 16:01:28,True,14718.33,Credit Card
+CUST00275,Evelyn,Robinson,evelyn.robinson274@example.com,+44-7851-230192,Male,23.0,Belgium,City_15,Individual,2023-01-24 01:27:33,True,15167.25,PayPal
+CUST00276,Noah,Sanchez,noah.sanchez275@example.com,+44-7530-260448,Female,39.0,Germany,City_2,Startup,2022-04-28 02:33:08,True,12063.58,PayPal
+CUST00277,Mia,Clark,mia.clark276@example.com,+44-7311-272655,Male,28.0,Germany,City_34,SMB,2023-11-20 09:06:41,True,2583.61,PayPal
+CUST00278,Abigail,Miller,abigail.miller277@example.com,+44-7165-438334,Female,65.0,United Kingdom,City_31,SMB,2024-05-04 21:36:53,True,1384.76,Debit Card
+CUST00279,Olivia,Lee,olivia.lee278@example.com,+44-7957-843788,Prefer not to say,33.0,Spain,City_1,Individual,2022-06-02 02:18:07,False,49392.26,PayPal
+CUST00280,Noah,Ramirez,noah.ramirez279@example.com,+44-7230-462831,Non-binary,50.0,Sweden,City_22,Enterprise,2022-03-20 14:04:10,False,21674.77,PayPal
+CUST00281,Amelia,Lee,amelia.lee280@example.com,,Male,26.0,Germany,City_40,SMB,2024-10-10 01:43:25,True,19524.17,PayPal
+CUST00282,Sarah,Taylor,sarah.taylor281@example.com,+44-7916-397846,Prefer not to say,23.0,France,City_13,SMB,2024-04-19 18:34:44,False,34142.54,Debit Card
+CUST00283,Karen,White,karen.white282@example.com,+44-7866-182690,Prefer not to say,33.0,United States,City_9,SMB,2022-01-23 22:12:45,True,11303.57,Bank Transfer
+CUST00284,Thomas,Martinez,thomas.martinez283@example.com,+44-7256-305837,Male,46.0,Spain,City_22,SMB,2022-05-25 21:05:17,True,47523.08,Credit Card
+CUST00285,Joseph,Walker,joseph.walker284@example.com,+44-7650-677599,Male,20.0,Australia,,Enterprise,2023-01-03 04:51:58,True,39424.08,PayPal
+CUST00286,Linda,Jones,linda.jones285@example.com,+44-7281-231250,Prefer not to say,37.0,Sweden,City_12,SMB,2022-09-16 08:31:39,False,4925.84,Debit Card
+CUST00287,Richard,Garcia,richard.garcia286@example.com,+44-7640-417534,Male,53.0,United Kingdom,City_21,Enterprise,2023-09-24 08:12:51,True,21170.25,PayPal
+CUST00288,Liam,Garcia,liam.garcia287@example.com,+44-7629-659392,Male,36.0,United Kingdom,City_4,Startup,2024-01-25 10:00:48,True,44016.36,Credit Card
+CUST00289,Linda,Garcia,linda.garcia288@example.com,+44-7095-626986,Non-binary,43.0,Netherlands,City_2,Enterprise,2024-01-18 18:20:33,True,47264.24,Bank Transfer
+CUST00290,Benjamin,Ramirez,benjamin.ramirez289@example.com,+44-7656-276827,Non-binary,20.0,Germany,City_10,Individual,2022-11-29 01:04:36,True,23636.37,Bank Transfer
+CUST00291,Elizabeth,Miller,elizabeth.miller290@example.com,+44-7606-708851,Male,36.0,Belgium,City_38,Startup,2023-09-15 23:51:56,True,30863.86,PayPal
+CUST00292,Richard,White,richard.white291@example.com,+44-7157-279516,Prefer not to say,37.0,France,City_46,Enterprise,2022-04-02 02:05:10,True,8768.18,Credit Card
+CUST00293,Susan,Rodriguez,susan.rodriguez292@example.com,+44-7674-754813,Female,49.0,Sweden,City_10,Enterprise,2022-09-13 18:07:00,True,49562.85,PayPal
+CUST00294,Ethan,Brown,ethan.brown293@example.com,+44-7737-734534,Male,24.0,Germany,City_50,Enterprise,2023-08-12 17:08:31,True,11967.75,Bank Transfer
+CUST00295,Sarah,Perez,sarah.perez294@example.com,+44-7345-983456,Male,69.0,Spain,City_8,Enterprise,2022-01-04 08:21:29,True,47165.22,Debit Card
+CUST00296,Evelyn,Davis,evelyn.davis295@example.com,+44-7946-690996,Female,58.0,Belgium,City_34,Enterprise,2023-08-30 11:58:41,True,32657.51,Debit Card
+CUST00297,Charles,Clark,charles.clark296@example.com,+44-7042-965322,Female,50.0,Germany,City_24,Enterprise,2023-02-16 23:29:11,True,30582.97,Debit Card
+CUST00298,Michael,Thompson,michael.thompson297@example.com,+44-7884-129751,Female,57.0,Germany,City_5,Individual,2023-12-08 19:56:29,True,25878.08,Credit Card
+CUST00299,Richard,Ramirez,richard.ramirez298@example.com,+44-7083-147670,Non-binary,56.0,Germany,City_24,Individual,2023-03-20 02:51:43,False,11918.16,Credit Card
+CUST00300,Charles,Brown,charles.brown299@example.com,+44-7971-772612,Non-binary,35.0,Netherlands,City_46,Individual,2023-10-20 02:51:43,True,9238.14,Bank Transfer
+CUST00301,Joseph,Jackson,joseph.jackson300@example.com,+44-7789-704788,Non-binary,57.0,Netherlands,City_43,Enterprise,2024-05-13 08:32:41,True,11414.07,Credit Card
+CUST00302,Emma,Martin,emma.martin301@example.com,+44-7271-782759,Prefer not to say,18.0,Italy,City_26,Startup,2024-10-25 04:21:03,True,9728.69,Bank Transfer
+CUST00303,Elizabeth,Thompson,elizabeth.thompson302@example.com,+44-7215-904214,Male,28.0,France,City_38,Individual,2024-01-27 00:25:31,True,39089.43,Bank Transfer
+CUST00304,Karen,Miller,karen.miller303@example.com,+44-7585-536822,Non-binary,45.0,Belgium,City_7,SMB,2022-08-29 11:14:38,True,17831.2,PayPal
+CUST00305,James,Allen,james.allen304@example.com,+44-7632-770030,Prefer not to say,74.0,France,City_22,SMB,2022-10-22 23:54:20,True,3363.21,Debit Card
+CUST00306,Benjamin,Wilson,benjamin.wilson305@example.com,+44-7031-622230,Prefer not to say,42.0,France,City_20,Enterprise,2023-04-06 22:04:10,True,48470.58,Debit Card
+CUST00307,William,Martinez,william.martinez306@example.com,+44-7910-757629,Female,67.0,Germany,City_21,Startup,2022-12-05 04:28:39,True,44247.4,Bank Transfer
+CUST00308,Sarah,Walker,sarah.walker307@example.com,+44-7558-403742,Female,40.0,Australia,City_9,Individual,2022-04-01 20:24:54,True,46423.74,Credit Card
+CUST00309,John,Anderson,john.anderson308@example.com,+44-7657-416768,Non-binary,,United States,City_11,Enterprise,2024-06-18 17:24:22,True,49747.94,Bank Transfer
+CUST00310,Patricia,Miller,patricia.miller309@example.com,+44-7494-356773,Male,47.0,United Kingdom,City_47,Startup,2024-04-22 06:30:08,True,9107.81,Debit Card
+CUST00311,Abigail,Thompson,abigail.thompson310@example.com,+44-7824-946567,Male,,United States,City_28,SMB,2022-04-05 16:39:46,True,20113.98,PayPal
+CUST00312,Charles,White,charles.white311@example.com,+44-7701-525818,Male,52.0,France,City_41,Individual,2023-05-03 04:02:05,True,38032.8,Debit Card
+CUST00313,William,Davis,william.davis312@example.com,+44-7304-575575,Prefer not to say,24.0,Sweden,City_32,Enterprise,2022-03-30 19:16:33,True,34953.02,Bank Transfer
+CUST00314,Harper,Moore,harper.moore313@example.com,+44-7074-822063,Prefer not to say,33.0,Netherlands,City_42,Enterprise,2022-03-19 21:26:30,True,8117.85,Bank Transfer
+CUST00315,Michael,Anderson,michael.anderson314@example.com,+44-7061-265759,Prefer not to say,43.0,Spain,City_21,Startup,2024-06-26 11:43:09,True,40883.74,Debit Card
+CUST00316,James,Ramirez,james.ramirez315@example.com,+44-7450-535810,Prefer not to say,,France,City_12,Enterprise,2024-01-11 15:57:51,True,11609.81,Debit Card
+CUST00317,Charles,Johnson,charles.johnson316@example.com,+44-7495-587002,Male,74.0,Belgium,City_46,Enterprise,2024-02-21 03:37:15,True,11578.97,Credit Card
+CUST00318,Ethan,Moore,ethan.moore317@example.com,+44-7208-456717,Male,69.0,United States,City_36,Individual,2024-04-05 01:49:03,True,27080.23,PayPal
+CUST00319,Ethan,Johnson,ethan.johnson318@example.com,+44-7621-250647,Female,66.0,Sweden,City_45,SMB,2022-09-02 13:31:03,False,29850.53,Debit Card
+CUST00320,Mason,Lopez,mason.lopez319@example.com,+44-7320-853258,Male,19.0,Spain,City_40,SMB,2022-03-30 08:37:27,False,29214.27,PayPal
+CUST00321,Olivia,Moore,olivia.moore320@example.com,+44-7326-869864,Prefer not to say,18.0,Germany,City_23,Startup,2024-02-28 21:13:07,True,5028.6,PayPal
+CUST00322,Elizabeth,Martin,elizabeth.martin321@example.com,+44-7881-462147,Prefer not to say,65.0,Germany,City_15,SMB,2022-05-05 10:46:18,True,43934.31,Credit Card
+CUST00323,Patricia,Perez,patricia.perez322@example.com,+44-7998-518084,Non-binary,29.0,France,City_43,Startup,2022-10-16 16:03:24,False,13647.2,Bank Transfer
+CUST00324,Thomas,Thompson,thomas.thompson323@example.com,+44-7133-897615,Male,22.0,Germany,City_38,Individual,2022-04-17 10:39:37,True,6910.99,PayPal
+CUST00325,Ethan,Smith,ethan.smith324@example.com,+44-7379-639995,Male,54.0,United States,City_12,Startup,2024-07-13 08:31:00,True,44493.03,PayPal
+CUST00326,Linda,Lopez,linda.lopez325@example.com,+44-7575-211341,Female,49.0,Belgium,City_25,SMB,2022-04-16 13:45:52,True,47804.75,PayPal
+CUST00327,Robert,Martinez,robert.martinez326@example.com,+44-7326-353480,Female,72.0,Netherlands,City_20,Enterprise,2024-11-14 21:44:54,True,43175.32,PayPal
+CUST00328,Sophia,Sanchez,sophia.sanchez327@example.com,+44-7477-228473,Prefer not to say,26.0,Belgium,City_47,Individual,2023-01-01 09:02:12,True,40571.05,Bank Transfer
+CUST00329,Harper,Jones,harper.jones328@example.com,+44-7273-571435,Non-binary,58.0,Netherlands,City_45,SMB,2023-09-20 05:50:37,True,32934.48,Credit Card
+CUST00330,Robert,Martinez,robert.martinez329@example.com,+44-7253-247720,Male,52.0,France,City_19,Individual,2022-07-06 05:41:48,True,27767.44,PayPal
+CUST00331,Patricia,Johnson,patricia.johnson330@example.com,+44-7099-153063,Male,36.0,Spain,City_9,Startup,2024-06-03 23:02:19,True,4805.84,Debit Card
+CUST00332,Barbara,Garcia,barbara.garcia331@example.com,+44-7297-502810,Non-binary,65.0,Italy,City_12,SMB,2023-01-18 11:34:24,True,20718.43,Bank Transfer
+CUST00333,Barbara,King,barbara.king332@example.com,+44-7884-745270,Male,33.0,Germany,City_47,Enterprise,2024-06-18 07:40:00,True,18948.08,Credit Card
+CUST00334,Karen,Wilson,karen.wilson333@example.com,+44-7428-360330,Female,20.0,Spain,City_1,Enterprise,2024-07-12 13:16:50,True,13357.81,Debit Card
+CUST00335,Jennifer,Harris,jennifer.harris334@example.com,+44-7985-267457,Non-binary,37.0,Australia,City_45,Enterprise,2022-03-03 17:40:35,True,36309.3,Debit Card
+CUST00336,Jessica,Clark,jessica.clark335@example.com,+44-7833-443341,Male,41.0,United States,,Enterprise,2024-08-20 04:12:59,False,25045.85,Debit Card
+CUST00337,Linda,Robinson,linda.robinson336@example.com,+44-7956-705748,Female,,United States,City_26,Individual,2022-05-08 08:33:46,True,4511.79,PayPal
+CUST00338,Abigail,Perez,abigail.perez337@example.com,+44-7738-427905,Female,73.0,United States,City_50,SMB,2023-10-14 05:50:15,True,11399.07,PayPal
+CUST00339,Lucas,Hernandez,lucas.hernandez338@example.com,+44-7194-900190,Prefer not to say,50.0,Italy,City_37,Enterprise,2024-10-18 04:38:52,True,34321.31,Debit Card
+CUST00340,Joseph,White,joseph.white339@example.com,+44-7163-622469,Male,41.0,United Kingdom,City_3,Enterprise,2024-06-25 16:52:48,True,4268.48,Credit Card
+CUST00341,Evelyn,Martin,evelyn.martin340@example.com,+44-7527-589491,Non-binary,69.0,Italy,City_12,Enterprise,2024-05-28 01:11:13,True,42634.74,PayPal
+CUST00342,Aiden,Lee,aiden.lee341@example.com,+44-7510-423528,Female,28.0,Spain,City_39,Startup,2024-03-23 02:45:08,True,25009.75,Credit Card
+CUST00343,Mason,Garcia,mason.garcia342@example.com,+44-7509-124302,Female,66.0,Australia,City_21,SMB,2023-05-07 11:07:21,True,24289.04,PayPal
+CUST00344,Mason,Brown,mason.brown343@example.com,+44-7092-512344,Prefer not to say,25.0,United States,City_40,Individual,2023-02-10 02:02:59,True,29824.19,PayPal
+CUST00345,Karen,Martinez,karen.martinez344@example.com,+44-7517-579441,Non-binary,53.0,Australia,City_15,Startup,2022-11-14 07:20:05,True,41321.71,PayPal
+CUST00346,Mia,Hernandez,mia.hernandez345@example.com,+44-7989-352422,Prefer not to say,55.0,Spain,City_41,Startup,2024-11-06 09:11:38,True,17716.56,Credit Card
+CUST00347,Karen,Brown,karen.brown346@example.com,+44-7220-711680,Female,57.0,Belgium,City_37,Individual,2023-05-04 01:37:24,True,34061.8,PayPal
+CUST00348,Patricia,Garcia,patricia.garcia347@example.com,+44-7361-151021,Male,37.0,Italy,City_7,Enterprise,2023-01-06 18:51:26,True,28503.73,Credit Card
+CUST00349,Michael,Moore,michael.moore348@example.com,+44-7051-395023,Non-binary,,United Kingdom,City_32,Enterprise,2023-02-17 14:49:36,True,13717.9,PayPal
+CUST00350,Susan,Lewis,susan.lewis349@example.com,+44-7506-726543,Male,65.0,Spain,City_10,SMB,2023-09-07 19:57:57,False,43992.18,Bank Transfer
+CUST00351,Susan,Ramirez,susan.ramirez350@example.com,+44-7903-983791,Male,42.0,Sweden,City_22,Enterprise,2022-07-23 07:29:45,True,39972.59,PayPal
+CUST00352,Thomas,Young,thomas.young351@example.com,+44-7669-805188,Prefer not to say,52.0,Belgium,City_48,Startup,2024-11-09 10:25:35,True,33093.37,Debit Card
+CUST00353,Jennifer,Lewis,jennifer.lewis352@example.com,+44-7481-399628,Female,42.0,Germany,City_5,Startup,2024-09-29 18:00:49,True,42603.8,Credit Card
+CUST00354,David,Clark,david.clark353@example.com,+44-7549-108574,Male,46.0,Spain,City_16,Startup,2023-04-12 00:42:06,True,43431.06,Bank Transfer
+CUST00355,Jessica,Moore,jessica.moore354@example.com,,Non-binary,35.0,Sweden,City_23,Individual,2023-12-12 06:34:03,True,35563.97,Credit Card
+CUST00356,Elizabeth,Wilson,elizabeth.wilson355@example.com,+44-7441-240440,Prefer not to say,63.0,United States,City_21,Enterprise,2023-05-07 03:56:24,True,41932.16,PayPal
+CUST00357,Abigail,Allen,abigail.allen356@example.com,+44-7903-377319,Non-binary,35.0,Germany,City_11,Enterprise,2022-04-23 16:36:12,True,35024.84,Debit Card
+CUST00358,Robert,Davis,robert.davis357@example.com,+44-7744-483545,Male,19.0,Australia,City_41,Enterprise,2022-01-15 11:18:19,True,34166.97,Debit Card
+CUST00359,David,Thompson,david.thompson358@example.com,+44-7782-522842,Non-binary,71.0,United Kingdom,City_6,Enterprise,2023-12-13 22:07:21,True,31121.26,Debit Card
+CUST00360,James,Ramirez,james.ramirez359@example.com,+44-7374-147440,Prefer not to say,52.0,Netherlands,City_46,SMB,2024-08-22 22:29:43,True,37759.47,PayPal
+CUST00361,Lucas,Davis,lucas.davis360@example.com,+44-7410-153642,Prefer not to say,33.0,Netherlands,City_43,SMB,2024-05-24 13:55:27,True,8350.95,PayPal
+CUST00362,Mason,Jackson,mason.jackson361@example.com,+44-7583-689107,Female,58.0,France,City_41,Startup,2022-06-05 07:34:16,True,44103.1,Debit Card
+CUST00363,Ethan,Young,ethan.young362@example.com,+44-7199-480133,Non-binary,53.0,Belgium,City_47,Startup,2022-04-24 19:21:27,True,43656.25,PayPal
+CUST00364,Charles,King,charles.king363@example.com,+44-7566-402620,Prefer not to say,50.0,United States,City_22,Individual,2024-04-15 04:27:48,True,1947.74,PayPal
+CUST00365,John,Martin,john.martin364@example.com,+44-7075-505116,Prefer not to say,21.0,Belgium,City_29,Startup,2022-11-28 02:58:07,True,41377.93,Bank Transfer
+CUST00366,Joseph,Williams,joseph.williams365@example.com,+44-7516-572230,Female,50.0,Netherlands,City_1,Enterprise,2024-02-25 20:44:54,False,6879.06,PayPal
+CUST00367,Charles,Anderson,charles.anderson366@example.com,+44-7782-676566,Prefer not to say,31.0,Australia,City_17,Startup,2023-02-16 23:23:17,True,17088.38,Bank Transfer
+CUST00368,Charles,Sanchez,charles.sanchez367@example.com,+44-7286-965401,Male,38.0,France,City_14,Startup,2022-07-25 18:20:19,True,37303.66,Debit Card
+CUST00369,Amelia,Brown,amelia.brown368@example.com,+44-7638-813449,Non-binary,65.0,Sweden,City_16,SMB,2023-06-27 03:59:32,True,8457.61,Credit Card
+CUST00370,Robert,Smith,robert.smith369@example.com,+44-7625-224582,Female,37.0,Germany,City_45,Enterprise,2022-04-17 20:43:33,True,40989.37,PayPal
+CUST00371,Joseph,Wilson,joseph.wilson370@example.com,+44-7131-201377,Male,73.0,United Kingdom,City_5,Individual,2023-01-15 11:34:59,True,41690.64,Debit Card
+CUST00372,Thomas,Martin,thomas.martin371@example.com,+44-7403-491326,Male,25.0,United States,City_23,Individual,2023-07-29 00:58:06,True,25619.65,Debit Card
+CUST00373,Richard,Wilson,richard.wilson372@example.com,+44-7813-455556,Non-binary,24.0,Germany,City_17,Individual,2023-03-19 17:06:00,True,816.1,PayPal
+CUST00374,Mia,Rodriguez,mia.rodriguez373@example.com,+44-7571-483366,Female,20.0,United Kingdom,City_7,Startup,2022-09-03 01:13:41,True,14708.39,Credit Card
+CUST00375,Linda,Taylor,linda.taylor374@example.com,+44-7773-251275,Prefer not to say,34.0,Italy,City_47,Individual,2023-11-12 16:42:17,True,31037.88,Credit Card
+CUST00376,Benjamin,Jackson,benjamin.jackson375@example.com,+44-7203-731728,Female,50.0,Spain,City_1,Individual,2024-04-23 20:38:00,False,49068.72,PayPal
+CUST00377,Joseph,Lee,joseph.lee376@example.com,+44-7521-520884,Prefer not to say,65.0,United Kingdom,City_4,Individual,2023-04-15 22:39:23,True,31774.77,Debit Card
+CUST00378,Barbara,Davis,barbara.davis377@example.com,+44-7512-142210,Non-binary,29.0,United Kingdom,City_25,SMB,2024-08-08 04:59:59,True,13360.28,PayPal
+CUST00379,Sarah,Smith,sarah.smith378@example.com,+44-7046-140804,Non-binary,68.0,Belgium,City_29,Enterprise,2024-10-12 22:00:15,True,31883.28,Credit Card
+CUST00380,Barbara,Young,barbara.young379@example.com,+44-7140-848255,Male,39.0,Australia,City_47,SMB,2024-04-01 16:20:18,False,27229.28,PayPal
+CUST00381,Robert,Ramirez,robert.ramirez380@example.com,+44-7341-943019,Male,72.0,Italy,City_27,Enterprise,2022-01-13 03:39:59,True,39102.35,Debit Card
+CUST00382,Patricia,Lopez,patricia.lopez381@example.com,+44-7485-644559,Male,39.0,Australia,City_11,SMB,2024-11-03 11:44:41,True,5795.54,Credit Card
+CUST00383,David,Rodriguez,david.rodriguez382@example.com,+44-7467-256175,Non-binary,63.0,Belgium,City_27,Enterprise,2024-05-11 13:04:18,False,38170.88,Credit Card
+CUST00384,Karen,Harris,karen.harris383@example.com,+44-7620-640546,Prefer not to say,47.0,Belgium,City_32,Individual,2023-04-11 01:38:55,False,27292.7,Credit Card
+CUST00385,Charles,Anderson,charles.anderson384@example.com,+44-7143-443897,Non-binary,55.0,Belgium,City_25,Individual,2024-10-27 12:55:26,False,48168.1,Debit Card
+CUST00386,Mason,Allen,mason.allen385@example.com,+44-7953-742848,Non-binary,55.0,Germany,City_23,Individual,2022-06-10 21:59:04,True,17422.67,PayPal
+CUST00387,Linda,Thompson,linda.thompson386@example.com,+44-7326-270395,Male,,Australia,,SMB,2022-07-28 14:44:08,True,31814.78,Credit Card
+CUST00388,Amelia,Jones,amelia.jones387@example.com,+44-7402-746447,Female,68.0,Australia,City_25,Individual,2023-02-15 20:00:15,True,46635.39,Debit Card
+CUST00389,Karen,Sanchez,karen.sanchez388@example.com,+44-7757-983532,Male,71.0,United States,City_7,Startup,2022-06-29 07:29:33,False,5574.23,Debit Card
+CUST00390,Sophia,Williams,sophia.williams389@example.com,+44-7306-722565,Female,,France,City_31,Enterprise,2022-06-16 06:35:25,True,46892.81,Bank Transfer
+CUST00391,Sarah,Ramirez,sarah.ramirez390@example.com,+44-7344-631958,Prefer not to say,44.0,Italy,City_37,SMB,2024-05-09 09:40:20,True,34550.34,Credit Card
+CUST00392,Logan,Johnson,logan.johnson391@example.com,+44-7848-634473,Prefer not to say,44.0,Germany,City_42,Individual,2022-08-30 11:31:05,True,3857.93,Debit Card
+CUST00393,Benjamin,Robinson,benjamin.robinson392@example.com,+44-7545-613641,Prefer not to say,51.0,Italy,City_49,Individual,2023-02-28 01:52:38,True,15397.7,PayPal
+CUST00394,Harper,Jones,harper.jones393@example.com,+44-7725-690268,Male,38.0,Germany,City_44,Enterprise,2023-03-14 16:38:06,True,35554.52,Debit Card
+CUST00395,Mason,Lee,mason.lee394@example.com,+44-7306-597960,Male,47.0,Australia,City_15,Individual,2024-07-28 13:41:25,True,3833.85,Debit Card
+CUST00396,Jennifer,Ramirez,jennifer.ramirez395@example.com,+44-7835-117445,Male,50.0,Spain,City_11,Individual,2022-11-24 04:50:33,True,29317.44,Bank Transfer
+CUST00397,John,Sanchez,john.sanchez396@example.com,+44-7377-447329,Non-binary,,France,City_29,Enterprise,2023-06-17 15:30:13,True,17621.21,Credit Card
+CUST00398,Mia,Clark,mia.clark397@example.com,+44-7689-214928,Male,64.0,Australia,City_5,Enterprise,2022-11-13 06:39:28,True,31235.32,Debit Card
+CUST00399,Liam,Jackson,liam.jackson398@example.com,+44-7426-712056,Non-binary,50.0,Netherlands,City_3,Startup,2024-09-12 06:06:17,True,2764.23,PayPal
+CUST00400,Thomas,Davis,thomas.davis399@example.com,+44-7315-935457,Prefer not to say,22.0,Belgium,City_19,Startup,2023-02-15 02:01:59,True,43641.07,Bank Transfer
+CUST00401,Mary,Sanchez,mary.sanchez400@example.com,,Male,65.0,United States,City_2,Enterprise,2024-02-25 03:00:55,True,48687.7,Debit Card
+CUST00402,Jennifer,Johnson,jennifer.johnson401@example.com,+44-7893-821466,Non-binary,36.0,Germany,City_21,SMB,2024-01-29 21:47:15,True,48459.45,PayPal
+CUST00403,Joseph,Lee,joseph.lee402@example.com,+44-7644-127941,Prefer not to say,21.0,Italy,City_17,Startup,2023-01-26 02:28:43,True,37607.77,Credit Card
+CUST00404,Mary,Hernandez,mary.hernandez403@example.com,+44-7611-597643,Prefer not to say,52.0,Belgium,City_7,Enterprise,2022-03-20 21:55:12,True,6939.27,Bank Transfer
+CUST00405,Sarah,Robinson,sarah.robinson404@example.com,+44-7271-787436,Male,66.0,Spain,City_5,Individual,2022-05-24 09:08:10,True,38034.03,Debit Card
+CUST00406,John,White,john.white405@example.com,+44-7801-913864,Female,34.0,United Kingdom,City_22,SMB,2024-09-12 07:50:17,True,1717.05,Bank Transfer
+CUST00407,Elizabeth,Garcia,elizabeth.garcia406@example.com,+44-7592-705693,Female,61.0,Spain,City_11,Individual,2023-10-21 00:02:57,True,1595.12,PayPal
+CUST00408,Ethan,Ramirez,ethan.ramirez407@example.com,+44-7233-856442,Prefer not to say,,Germany,,Startup,2023-03-06 19:23:11,True,16518.71,Credit Card
+CUST00409,Evelyn,Miller,evelyn.miller408@example.com,+44-7052-711868,Female,47.0,Belgium,City_11,Individual,2022-03-10 11:40:25,True,24687.84,Credit Card
+CUST00410,Mason,Thomas,mason.thomas409@example.com,+44-7491-278794,Female,46.0,Germany,City_47,SMB,2022-01-06 12:11:34,False,38635.17,Credit Card
+CUST00411,Sarah,Ramirez,sarah.ramirez410@example.com,+44-7536-759580,Non-binary,63.0,Sweden,City_5,Enterprise,2023-06-03 03:53:20,True,34323.12,Credit Card
+CUST00412,Elizabeth,Sanchez,elizabeth.sanchez411@example.com,+44-7738-749840,Non-binary,70.0,United States,City_36,Enterprise,2022-07-23 05:18:37,False,22572.18,Debit Card
+CUST00413,Mia,King,mia.king412@example.com,+44-7793-982027,Non-binary,,United States,City_6,SMB,2024-09-16 17:18:29,True,14044.52,PayPal
+CUST00414,Harper,Garcia,harper.garcia413@example.com,+44-7389-254954,Prefer not to say,52.0,United Kingdom,City_22,Individual,2023-02-11 22:24:00,True,49857.66,Bank Transfer
+CUST00415,Jennifer,Sanchez,jennifer.sanchez414@example.com,+44-7841-813793,Female,58.0,Italy,City_39,Individual,2022-09-09 00:12:45,True,21595.97,Debit Card
+CUST00416,Ethan,Martin,ethan.martin415@example.com,+44-7248-133104,Male,54.0,France,City_40,SMB,2023-11-18 08:49:18,True,22843.66,Bank Transfer
+CUST00417,Noah,Perez,noah.perez416@example.com,+44-7586-834549,Female,41.0,Germany,,Enterprise,2024-05-07 00:08:12,True,8599.38,Credit Card
+CUST00418,Lucas,Anderson,lucas.anderson417@example.com,+44-7112-300051,Prefer not to say,46.0,United Kingdom,City_46,Individual,2023-10-27 09:19:26,True,39843.07,PayPal
+CUST00419,Olivia,Perez,olivia.perez418@example.com,+44-7019-562462,Non-binary,,France,City_2,Startup,2024-05-21 08:07:25,True,34837.27,Debit Card
+CUST00420,Liam,Hernandez,liam.hernandez419@example.com,+44-7321-539122,Prefer not to say,63.0,United Kingdom,City_28,SMB,2022-01-16 00:30:45,False,11428.1,Bank Transfer
+CUST00421,Michael,Jones,michael.jones420@example.com,+44-7155-533020,Non-binary,70.0,France,City_42,Startup,2022-06-23 18:57:38,False,4577.86,Bank Transfer
+CUST00422,David,Allen,david.allen421@example.com,+44-7707-313795,Prefer not to say,48.0,Sweden,City_11,Startup,2022-04-27 21:17:39,False,34184.72,Debit Card
+CUST00423,Olivia,Davis,olivia.davis422@example.com,+44-7420-626195,Male,52.0,Netherlands,City_39,Enterprise,2022-08-20 13:08:47,True,32898.31,Bank Transfer
+CUST00424,Lucas,King,lucas.king423@example.com,+44-7793-741181,Non-binary,,Australia,City_28,SMB,2024-04-27 13:04:49,True,14026.35,Bank Transfer
+CUST00425,Harper,Allen,harper.allen424@example.com,+44-7942-594514,Non-binary,69.0,Australia,City_11,Individual,2022-02-25 23:13:34,False,47567.75,Debit Card
+CUST00426,Charles,Gonzalez,charles.gonzalez425@example.com,+44-7893-989587,Female,38.0,Italy,City_4,Individual,2023-07-28 13:22:10,True,7977.37,PayPal
+CUST00427,Sophia,Thompson,sophia.thompson426@example.com,+44-7753-862736,Prefer not to say,49.0,France,City_7,SMB,2024-06-23 21:31:50,True,21900.57,Debit Card
+CUST00428,Abigail,Thompson,abigail.thompson427@example.com,+44-7063-840058,Female,40.0,Netherlands,City_22,Enterprise,2024-05-08 07:37:43,True,47208.99,Debit Card
+CUST00429,John,Martinez,john.martinez428@example.com,+44-7141-643878,Prefer not to say,50.0,France,,Individual,2022-08-19 01:20:11,True,21276.5,PayPal
+CUST00430,Amelia,Thomas,amelia.thomas429@example.com,+44-7212-688132,Male,20.0,Italy,City_13,Individual,2023-10-30 15:36:36,False,32107.03,Bank Transfer
+CUST00431,Jennifer,Miller,jennifer.miller430@example.com,+44-7332-794395,Female,35.0,Germany,City_27,Individual,2022-07-17 23:30:48,True,20180.92,Debit Card
+CUST00432,Liam,Martinez,liam.martinez431@example.com,+44-7489-651002,Non-binary,42.0,United Kingdom,City_45,Enterprise,2022-03-06 23:29:34,True,14073.65,Bank Transfer
+CUST00433,Thomas,Taylor,thomas.taylor432@example.com,+44-7385-428993,Male,59.0,Netherlands,City_36,Individual,2023-04-24 20:42:15,True,49206.89,Bank Transfer
+CUST00434,Liam,Gonzalez,liam.gonzalez433@example.com,+44-7979-281594,Prefer not to say,48.0,Belgium,City_47,Individual,2023-07-21 11:11:37,True,20762.03,Bank Transfer
+CUST00435,Linda,Lopez,linda.lopez434@example.com,+44-7470-659024,Non-binary,71.0,Italy,City_47,Startup,2022-03-03 23:23:19,True,44757.91,Debit Card
+CUST00436,Sophia,Martinez,sophia.martinez435@example.com,+44-7350-672808,Prefer not to say,20.0,Australia,,Enterprise,2023-07-10 20:05:42,False,11882.75,PayPal
+CUST00437,Logan,Jones,logan.jones436@example.com,+44-7362-808699,Non-binary,57.0,Germany,City_17,Individual,2022-11-23 08:13:15,True,11048.68,Credit Card
+CUST00438,James,Lopez,james.lopez437@example.com,+44-7790-855944,Prefer not to say,63.0,Italy,City_43,Enterprise,2024-11-25 13:17:21,True,2041.14,PayPal
+CUST00439,Benjamin,Young,benjamin.young438@example.com,+44-7697-774558,Non-binary,41.0,United States,City_19,Enterprise,2023-01-23 15:08:34,True,32757.51,Debit Card
+CUST00440,Amelia,Robinson,amelia.robinson439@example.com,+44-7822-826991,Prefer not to say,67.0,Germany,City_20,Individual,2024-11-02 01:04:47,False,18742.05,PayPal
+CUST00441,Lucas,Lewis,lucas.lewis440@example.com,+44-7270-739711,Female,49.0,Sweden,City_16,Individual,2022-06-09 16:25:26,True,43285.73,Credit Card
+CUST00442,Patricia,Lee,patricia.lee441@example.com,+44-7495-301603,Non-binary,64.0,Sweden,City_7,Enterprise,2023-07-04 10:05:42,False,23923.89,PayPal
+CUST00443,Richard,Lee,richard.lee442@example.com,+44-7980-358494,Non-binary,39.0,Australia,City_4,Enterprise,2024-05-19 17:58:13,True,48425.57,Debit Card
+CUST00444,Evelyn,Martinez,evelyn.martinez443@example.com,+44-7285-685196,Female,40.0,Netherlands,City_26,Enterprise,2023-09-24 06:50:49,True,9683.51,Bank Transfer
+CUST00445,Emma,Lewis,emma.lewis444@example.com,+44-7305-335790,Prefer not to say,19.0,United Kingdom,City_37,Startup,2024-08-22 03:56:17,True,43496.85,Credit Card
+CUST00446,Harper,Jones,harper.jones445@example.com,+44-7964-412071,Non-binary,44.0,Sweden,,SMB,2022-08-29 02:09:57,True,38941.54,PayPal
+CUST00447,Mason,Walker,mason.walker446@example.com,+44-7789-403042,Female,59.0,United States,City_32,Individual,2023-01-03 18:12:26,True,38660.63,Debit Card
+CUST00448,Patricia,Lewis,patricia.lewis447@example.com,,Prefer not to say,19.0,France,City_10,Startup,2022-09-10 10:30:17,True,42316.77,Credit Card
+CUST00449,Susan,Martin,susan.martin448@example.com,+44-7706-839233,Non-binary,43.0,Netherlands,City_4,Startup,2022-10-03 00:59:26,True,38170.69,Credit Card
+CUST00450,Sarah,Moore,sarah.moore449@example.com,+44-7500-432441,Non-binary,34.0,France,City_24,Enterprise,2023-10-03 11:26:59,False,31497.91,PayPal
+CUST00451,Abigail,Brown,abigail.brown450@example.com,,Prefer not to say,57.0,Italy,City_1,SMB,2022-02-08 12:06:09,True,6996.62,Debit Card
+CUST00452,William,Thompson,william.thompson451@example.com,+44-7573-934042,Female,50.0,Germany,City_28,Individual,2022-10-06 15:03:00,True,2110.05,Debit Card
+CUST00453,Charles,Allen,charles.allen452@example.com,+44-7738-386741,Non-binary,26.0,United States,City_6,Startup,2023-06-01 00:46:18,False,46081.97,Credit Card
+CUST00454,Mason,Jones,mason.jones453@example.com,+44-7294-227794,Prefer not to say,60.0,Germany,City_19,Individual,2023-10-02 13:46:45,True,31024.19,Credit Card
+CUST00455,Harper,Martin,harper.martin454@example.com,+44-7587-809489,Non-binary,71.0,Spain,City_43,Startup,2024-11-06 15:56:52,True,39928.6,Bank Transfer
+CUST00456,Linda,Robinson,linda.robinson455@example.com,+44-7556-498138,Prefer not to say,65.0,Australia,City_41,Individual,2023-01-21 12:20:43,False,24335.36,PayPal
+CUST00457,Mary,Lewis,mary.lewis456@example.com,,Non-binary,56.0,United Kingdom,City_39,Enterprise,2023-02-19 11:14:16,True,6306.76,Bank Transfer
+CUST00458,Jessica,Williams,jessica.williams457@example.com,+44-7838-461899,Male,46.0,United Kingdom,City_31,Enterprise,2022-09-05 07:19:32,True,6696.7,Credit Card
+CUST00459,David,Brown,david.brown458@example.com,+44-7977-910616,Female,59.0,United Kingdom,City_13,SMB,2022-06-17 22:05:49,True,34435.48,Credit Card
+CUST00460,Karen,White,karen.white459@example.com,+44-7823-253591,Female,72.0,Spain,City_7,Enterprise,2023-08-18 06:11:20,True,21800.14,Debit Card
+CUST00461,Abigail,Jackson,abigail.jackson460@example.com,+44-7297-144109,Male,43.0,United Kingdom,City_2,Startup,2022-03-02 03:45:28,True,10425.97,Debit Card
+CUST00462,James,Jones,james.jones461@example.com,+44-7294-848831,Prefer not to say,52.0,Sweden,City_14,Startup,2024-01-02 04:35:45,True,24833.93,Bank Transfer
+CUST00463,Abigail,Garcia,abigail.garcia462@example.com,+44-7080-463188,Female,67.0,Netherlands,City_11,Startup,2022-12-12 12:55:48,False,3678.34,Credit Card
+CUST00464,Lucas,Allen,lucas.allen463@example.com,+44-7946-563864,Prefer not to say,42.0,Belgium,City_41,Startup,2022-11-07 00:36:51,True,29307.58,PayPal
+CUST00465,Jennifer,Harris,jennifer.harris464@example.com,+44-7671-368900,Non-binary,41.0,France,City_19,Enterprise,2023-12-17 01:20:54,True,13815.17,Debit Card
+CUST00466,Joseph,Robinson,joseph.robinson465@example.com,+44-7765-602351,Male,,France,City_6,Enterprise,2023-06-28 04:12:39,True,39979.18,Debit Card
+CUST00467,Linda,Williams,linda.williams466@example.com,+44-7219-311883,Prefer not to say,24.0,United Kingdom,City_31,SMB,2023-04-20 02:20:24,True,15862.92,Credit Card
+CUST00468,Amelia,Lewis,amelia.lewis467@example.com,+44-7847-664739,Prefer not to say,74.0,Australia,City_8,Individual,2022-12-20 13:22:29,True,23033.4,PayPal
+CUST00469,Linda,Gonzalez,linda.gonzalez468@example.com,+44-7277-689318,Female,53.0,Belgium,City_20,SMB,2022-12-13 07:11:32,True,1075.22,Bank Transfer
+CUST00470,Barbara,Lee,barbara.lee469@example.com,+44-7712-384815,Non-binary,62.0,Spain,City_26,Individual,2022-02-06 18:16:26,True,4086.12,PayPal
+CUST00471,Harper,Walker,harper.walker470@example.com,+44-7140-214532,Female,37.0,Netherlands,City_31,Enterprise,2024-10-22 07:49:14,True,19928.43,Credit Card
+CUST00472,Charles,Allen,charles.allen471@example.com,+44-7630-876880,Non-binary,18.0,Spain,City_32,Startup,2022-10-28 00:24:01,False,24256.97,PayPal
+CUST00473,Logan,Martinez,logan.martinez472@example.com,+44-7600-350905,Female,25.0,Belgium,City_43,SMB,2023-09-11 23:53:18,True,30201.02,PayPal
+CUST00474,Sarah,Brown,sarah.brown473@example.com,+44-7248-153231,Prefer not to say,63.0,Netherlands,City_17,SMB,2023-05-25 22:29:33,False,14937.3,Credit Card
+CUST00475,Lucas,Lewis,lucas.lewis474@example.com,+44-7685-656837,Prefer not to say,33.0,Italy,City_6,Enterprise,2023-03-09 19:04:29,True,34901.6,Bank Transfer
+CUST00476,Ethan,Miller,ethan.miller475@example.com,+44-7231-768933,Male,31.0,Germany,City_42,Individual,2022-04-18 20:11:35,False,43076.06,PayPal
+CUST00477,Ethan,Perez,ethan.perez476@example.com,+44-7238-155040,Prefer not to say,29.0,United States,City_35,SMB,2023-03-10 14:32:02,True,39102.62,Credit Card
+CUST00478,Jessica,Garcia,jessica.garcia477@example.com,+44-7102-533377,Prefer not to say,68.0,Netherlands,City_25,Individual,2023-06-30 11:40:35,True,2461.13,PayPal
+CUST00479,Amelia,Allen,amelia.allen478@example.com,+44-7338-852204,Prefer not to say,40.0,Germany,City_12,SMB,2024-09-23 12:10:21,True,24285.09,Credit Card
+CUST00480,Abigail,Lopez,abigail.lopez479@example.com,+44-7483-205428,Prefer not to say,32.0,Australia,City_24,Startup,2024-03-02 08:01:12,True,5694.04,Bank Transfer
+CUST00481,Barbara,Williams,barbara.williams480@example.com,+44-7697-908206,Male,,United Kingdom,City_25,Enterprise,2023-09-13 21:05:24,True,12481.23,Debit Card
+CUST00482,Aiden,Thomas,aiden.thomas481@example.com,+44-7140-105433,Non-binary,51.0,France,City_24,Individual,2024-11-21 14:16:17,True,49339.8,Bank Transfer
+CUST00483,Richard,Lewis,richard.lewis482@example.com,+44-7987-677086,Male,19.0,Spain,City_12,Enterprise,2024-04-12 23:34:17,True,7553.53,Debit Card
+CUST00484,Logan,Lewis,logan.lewis483@example.com,+44-7951-265613,Male,49.0,Australia,City_29,Enterprise,2023-05-30 10:09:42,True,25194.96,Debit Card
+CUST00485,William,King,william.king484@example.com,,Female,,United Kingdom,City_3,Individual,2022-02-12 21:01:21,True,31098.71,PayPal
+CUST00486,Robert,King,robert.king485@example.com,+44-7957-598807,Non-binary,39.0,Belgium,City_17,Individual,2022-06-29 04:15:07,True,35272.02,Credit Card
+CUST00487,Sarah,Hernandez,sarah.hernandez486@example.com,+44-7488-782139,Female,68.0,Germany,City_29,SMB,2023-02-10 18:48:30,True,28202.61,Credit Card
+CUST00488,Lucas,White,lucas.white487@example.com,+44-7204-892630,Male,42.0,Sweden,,Individual,2022-10-05 09:29:26,True,983.66,Credit Card
+CUST00489,Olivia,White,olivia.white488@example.com,+44-7987-401198,Prefer not to say,39.0,Italy,City_17,Enterprise,2024-06-20 21:57:14,True,16659.83,Bank Transfer
+CUST00490,Logan,Jackson,logan.jackson489@example.com,+44-7328-399279,Non-binary,39.0,Italy,City_15,Enterprise,2023-02-17 09:18:12,False,26126.73,Bank Transfer
+CUST00491,Sarah,Harris,sarah.harris490@example.com,+44-7661-162036,Prefer not to say,66.0,Netherlands,City_18,Individual,2022-03-01 10:19:54,True,4849.39,Bank Transfer
+CUST00492,James,Clark,james.clark491@example.com,+44-7929-906066,Male,69.0,Germany,City_37,Individual,2022-06-18 09:32:23,True,17856.03,Bank Transfer
+CUST00493,Charles,Perez,charles.perez492@example.com,+44-7091-783984,Male,59.0,Australia,City_4,SMB,2024-07-15 17:47:18,True,2143.55,PayPal
+CUST00494,Karen,Brown,karen.brown493@example.com,+44-7587-343500,Male,23.0,Sweden,City_10,SMB,2023-11-07 01:42:40,False,4389.64,PayPal
+CUST00495,Harper,Perez,harper.perez494@example.com,+44-7547-874568,Non-binary,32.0,United Kingdom,City_49,SMB,2023-06-22 00:08:58,True,20147.7,Debit Card
+CUST00496,Barbara,Jones,barbara.jones495@example.com,+44-7740-991638,Female,71.0,Netherlands,City_45,Enterprise,2023-05-03 06:44:16,True,7069.43,Debit Card
+CUST00497,Mason,Perez,mason.perez496@example.com,+44-7959-139110,Female,60.0,Spain,City_43,Individual,2023-11-09 21:56:35,True,28593.27,Credit Card
+CUST00498,Benjamin,Miller,benjamin.miller497@example.com,+44-7935-283568,Prefer not to say,54.0,Italy,City_7,Startup,2024-07-30 17:06:14,True,34628.52,Bank Transfer
+CUST00499,Ethan,Harris,ethan.harris498@example.com,,Non-binary,50.0,United States,,Individual,2024-03-05 11:14:01,True,40129.04,PayPal
+CUST00500,Noah,Jackson,noah.jackson499@example.com,+44-7180-138105,Prefer not to say,25.0,Italy,,Individual,2022-06-29 15:35:14,False,10407.44,Debit Card
+CUST00362,Mason,Jackson,mason.jackson361@example.com,+44-7583-689107,Female,58.0,France,City_41,Startup,2022-06-05 07:34:16,True,44103.1,Debit Card
+CUST00074,Amelia,Taylor,amelia.taylor73@example.com,+44-7164-386042,Non-binary,21.0,Netherlands,City_21,SMB,2023-07-30 01:20:48,True,47332.72,Bank Transfer
+CUST00375,Linda,Taylor,linda.taylor374@example.com,+44-7773-251275,Prefer not to say,34.0,Italy,City_47,Individual,2023-11-12 16:42:17,True,31037.88,Credit Card
+CUST00156,Amelia,Anderson,amelia.anderson155@example.com,+44-7907-143941,Female,22.0,Australia,City_29,Startup,2022-09-03 16:32:54,True,33419.32,Debit Card
+CUST00105,Olivia,Anderson,olivia.anderson104@example.com,+44-7433-216587,Male,42.0,Belgium,City_20,Startup,2023-05-04 20:02:30,True,10790.37,Bank Transfer
+CUST00395,Mason,Lee,mason.lee394@example.com,+44-7306-597960,Male,47.0,Australia,City_15,Individual,2024-07-28 13:41:25,True,3833.85,Debit Card
+CUST00378,Barbara,Davis,barbara.davis377@example.com,+44-7512-142210,Non-binary,29.0,United Kingdom,City_25,SMB,2024-08-08 04:59:59,True,13360.28,PayPal
+CUST00125,Aiden,White,aiden.white124@example.com,+44-7998-478120,Prefer not to say,52.0,Spain,City_26,Enterprise,2022-08-03 21:22:52,True,43489.16,Credit Card
+CUST00069,Michael,Thomas,michael.thomas68@example.com,+44-7567-207573,Prefer not to say,31.0,Sweden,City_21,Startup,2023-03-08 19:36:25,False,20337.77,PayPal
+CUST00451,Abigail,Brown,abigail.brown450@example.com,,Prefer not to say,57.0,Italy,City_1,SMB,2022-02-08 12:06:09,True,6996.62,Debit Card

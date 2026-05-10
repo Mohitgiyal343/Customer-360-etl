@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Customer 360 — Analytics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#21262d;--border:#30363d;
+  --accent:#58a6ff;--accent2:#3fb950;--warn:#e3b341;--danger:#f85149;
+  --text:#e6edf3;--muted:#8b949e;
+  --grad1:linear-gradient(135deg,#1f6feb,#58a6ff);
+  --grad2:linear-gradient(135deg,#238636,#3fb950);
+  --grad3:linear-gradient(135deg,#9e6a03,#e3b341);
+  --grad4:linear-gradient(135deg,#da3633,#f85149);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--accent)}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;
+  background:rgba(22,27,34,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.15rem;font-weight:800;background:var(--grad1);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;letter-spacing:-.5px}
+.nav-meta{font-size:.78rem;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;
+  font-size:.72rem;font-weight:600;letter-spacing:.5px;border:1px solid}
+.pill-green{color:var(--accent2);border-color:var(--accent2);background:rgba(63,185,80,.08)}
+
+/* LAYOUT */
+.wrapper{max-width:1440px;margin:0 auto;padding:24px 28px}
+.section-title{font-size:.7rem;font-weight:700;letter-spacing:1.5px;color:var(--muted);
+  text-transform:uppercase;margin:32px 0 14px;padding-left:4px;
+  border-left:3px solid var(--accent);padding-left:10px}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.kpi{border-radius:14px;padding:22px 24px;position:relative;overflow:hidden;
+  background:var(--surface);border:1px solid var(--border);
+  transition:transform .2s,box-shadow .2s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.kpi::before{content:'';position:absolute;inset:0;opacity:.06;z-index:0}
+.kpi-blue::before{background:var(--grad1)}
+.kpi-green::before{background:var(--grad2)}
+.kpi-yellow::before{background:var(--grad3)}
+.kpi-red::before{background:var(--grad4)}
+.kpi-label{font-size:.72rem;font-weight:600;letter-spacing:.8px;color:var(--muted);
+  text-transform:uppercase;position:relative;z-index:1}
+.kpi-value{font-size:2rem;font-weight:800;margin:6px 0 2px;position:relative;z-index:1;
+  letter-spacing:-1px}
+.kpi-blue .kpi-value{color:var(--accent)}
+.kpi-green .kpi-value{color:var(--accent2)}
+.kpi-yellow .kpi-value{color:var(--warn)}
+.kpi-red .kpi-value{color:var(--danger)}
+.kpi-sub{font-size:.75rem;color:var(--muted);position:relative;z-index:1}
+
+/* CHARTS GRID */
+.charts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px;transition:box-shadow .2s}
+.chart-card:hover{box-shadow:0 4px 24px rgba(88,166,255,.1)}
+.chart-card.wide{grid-column:1/-1}
+.chart-title{font-size:.78rem;font-weight:700;letter-spacing:.6px;color:var(--text);
+  margin-bottom:16px;text-transform:uppercase}
+.chart-wrap{position:relative;height:240px}
+.chart-wrap.tall{height:300px}
+
+/* TABLE */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.table-controls{display:flex;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);
+  flex-wrap:wrap;align-items:center}
+.search-box{flex:1;min-width:200px;padding:8px 14px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  font-family:inherit;font-size:.83rem;outline:none;transition:border .2s}
+.search-box:focus{border-color:var(--accent)}
+.filter-select{padding:8px 12px;border-radius:8px;background:var(--surface2);
+  border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.83rem;outline:none}
+.tbl{width:100%;border-collapse:collapse;font-size:.8rem}
+.tbl th{padding:10px 14px;text-align:left;font-size:.68rem;font-weight:700;
+  letter-spacing:.8px;color:var(--muted);text-transform:uppercase;
+  background:var(--surface2);border-bottom:1px solid var(--border);cursor:pointer;
+  user-select:none;transition:color .15s}
+.tbl th:hover{color:var(--accent)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(88,166,255,.04)}
+.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.68rem;
+  font-weight:600;letter-spacing:.4px}
+.b-low{background:rgba(63,185,80,.15);color:var(--accent2)}
+.b-med{background:rgba(227,179,65,.15);color:var(--warn)}
+.b-high{background:rgba(248,81,73,.15);color:var(--danger)}
+.b-churn{background:rgba(248,81,73,.12);color:var(--danger)}
+.b-active{background:rgba(63,185,80,.12);color:var(--accent2)}
+.b-seg{background:rgba(88,166,255,.12);color:var(--accent)}
+.pagination{display:flex;gap:8px;align-items:center;justify-content:flex-end;
+  padding:12px 20px;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+.page-btn{padding:4px 12px;border-radius:6px;border:1px solid var(--border);
+  background:var(--surface2);color:var(--text);cursor:pointer;font-size:.78rem;
+  transition:background .15s,border-color .15s}
+.page-btn:hover,.page-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.page-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* SUMMARY BAR */
+.summary-bar{display:flex;gap:24px;padding:14px 20px;
+  background:var(--surface2);border-bottom:1px solid var(--border);
+  flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
+.summary-bar span b{color:var(--text)}
+
+/* FOOTER */
+footer{text-align:center;padding:24px;font-size:.73rem;color:var(--muted);
+  border-top:1px solid var(--border);margin-top:40px}
+
+@media(max-width:768px){
+  .charts-grid{grid-template-columns:1fr}
+  .chart-card.wide{grid-column:1}
+  .kpi-value{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">⬡ Customer 360 Analytics</span>
+  <div style="display:flex;gap:12px;align-items:center">
+    <span class="pill pill-green">● LIVE</span>
+    <span class="nav-meta" id="run-time"></span>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- KPIs -->
+  <p class="section-title">Key Performance Indicators</p>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue">
+      <div class="kpi-label">Total Customers</div>
+      <div class="kpi-value">500</div>
+      <div class="kpi-sub">Active: 247 &nbsp;·&nbsp; Churned: 253</div>
+    </div>
+    <div class="kpi kpi-green">
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value">$6,092,770</div>
+      <div class="kpi-sub">Across all completed orders</div>
+    </div>
+    <div class="kpi kpi-yellow">
+      <div class="kpi-label">Churn Rate</div>
+      <div class="kpi-value">50.6%</div>
+      <div class="kpi-sub">90-day inactivity threshold</div>
+    </div>
+    <div class="kpi kpi-red">
+      <div class="kpi-label">Avg. Customer LTV</div>
+      <div class="kpi-value">$46,943</div>
+      <div class="kpi-sub">3-year projected lifetime value</div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 1 -->
+  <p class="section-title">Revenue & Trends</p>
+  <div class="charts-grid">
+    <div class="chart-card wide">
+      <div class="chart-title">📈 Monthly Revenue Trend</div>
+      <div class="chart-wrap tall"><canvas id="monthlyChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">🌍 Revenue by Country (Top 10)</div>
+      <div class="chart-wrap"><canvas id="countryChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">💎 Revenue Tier Distribution</div>
+      <div class="chart-wrap"><canvas id="tierChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 2 -->
+  <p class="section-title">Segmentation & Churn</p>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">🏆 RFM Segment Distribution</div>
+      <div class="chart-wrap"><canvas id="segChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">⚠️ Churn Risk Bands</div>
+      <div class="chart-wrap"><canvas id="riskChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">🔵 Churn vs Active</div>
+      <div class="chart-wrap"><canvas id="churnDonut"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">📊 Customer Segment Mix</div>
+      <div class="chart-wrap"><canvas id="segMixChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <p class="section-title">Customer Explorer</p>
+  <div class="table-wrap">
+    <div class="summary-bar" id="summary-bar">Loading…</div>
+    <div class="table-controls">
+      <input class="search-box" id="search" placeholder="🔍  Search by name, ID, country…" oninput="filterTable()"/>
+      <select class="filter-select" id="filterSeg" onchange="filterTable()">
+        <option value="">All Segments</option>
+      </select>
+      <select class="filter-select" id="filterRisk" onchange="filterTable()">
+        <option value="">All Risk Bands</option>
+      </select>
+      <select class="filter-select" id="filterChurn" onchange="filterTable()">
+        <option value="">Churn: All</option>
+        <option value="0">Active</option>
+        <option value="1">Churned</option>
+      </select>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="tbl" id="mainTable">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+</div>
+
+<footer>Customer 360 ETL Pipeline · Generated <span id="gen-date"></span> · All data synthetic</footer>
+
+<script>
+// ── DATA INJECTED BY PYTHON ────────────────────────────────────────────────────
+const SEG_DATA   = {"Lost": 95, "Need Attention": 81, "Champion": 70, "New Customer": 69, "At Risk": 60, "Loyal": 54, "Potential Loyal": 49, "Promising": 22};
+const TIER_DATA  = {"VIP": 287, "High": 165, "Medium": 28, "No Revenue": 11, "Low": 9};
+const RISK_DATA  = {"High": 251, "Low": 247, "Medium": 2};
+const CNTRY_DATA = {"Germany": 962401.44, "France": 638497.41, "Netherlands": 622341.4, "Sweden": 615095.5, "Belgium": 583862.26, "United States": 578177.72, "Australia": 549112.22, "United Kingdom": 546431.23, "Italy": 515442.44, "Spain": 481408.79};
+const M_LABELS   = ["2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12"];
+const M_VALUES   = [33314.99, 20400.11, 56338.4, 76419.75, 48357.32, 36765.89, 68435.89, 38794.87, 36302.7, 63086.35, 42288.68, 47415.36, 500758.37, 596614.14, 569417.95, 519900.18, 597039.24, 530317.51, 621955.51, 507597.73, 557326.23, 557541.58, 527160.4, 380490.6];
+const TABLE_DATA = [{"CustomerID": "CUST00001", "FirstName": "Aiden", "LastName": "Perez", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 3469.58, "CLV": 11947.14, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00002", "FirstName": "Richard", "LastName": "Harris", "Country": "United States", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 12100.81, "CLV": 61629.71, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00003", "FirstName": "Thomas", "LastName": "Robinson", "Country": "Australia", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 24452.2, "CLV": 100658.49, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00004", "FirstName": "John", "LastName": "Lee", "Country": "France", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 11918.03, "CLV": 18277.65, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00005", "FirstName": "Mia", "LastName": "Gonzalez", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 8183.49, "CLV": 8708.38, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00006", "FirstName": "James", "LastName": "Thomas", "Country": "United Kingdom", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 22886.4, "CLV": 68847.82, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00007", "FirstName": "Evelyn", "LastName": "Harris", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 14504.83, "CLV": 51070.06, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00008", "FirstName": "Benjamin", "LastName": "Anderson", "Country": "Germany", "Segment": "SMB", "TotalOrders": 7.0, "TotalRevenue": 20592.35, "CLV": 75921.29, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00009", "FirstName": "Richard", "LastName": "Clark", "Country": "Italy", "Segment": "Individual", "TotalOrders": 1.0, "TotalRevenue": 4118.35, "CLV": 125266.48, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00010", "FirstName": "Emma", "LastName": "Williams", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 16058.37, "CLV": 57652.18, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00011", "FirstName": "Mia", "LastName": "Lee", "Country": "Germany", "Segment": "Enterprise", "TotalOrders": 6.0, "TotalRevenue": 19984.11, "CLV": 63797.67, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00012", "FirstName": "Robert", "LastName": "Walker", "Country": "Germany", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 8910.48, "CLV": 29388.48, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00013", "FirstName": "Olivia", "LastName": "Harris", "Country": "France", "Segment": "Enterprise", "TotalOrders": 6.0, "TotalRevenue": 31029.95, "CLV": 115178.97, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00014", "FirstName": "Liam", "LastName": "Harris", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 15658.57, "CLV": 67504.47, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00015", "FirstName": "Linda", "LastName": "Martinez", "Country": "Italy", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 10573.76, "CLV": 11132.95, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00016", "FirstName": "Karen", "LastName": "Young", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 22920.21, "CLV": 76986.59, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00017", "FirstName": "Logan", "LastName": "Williams", "Country": "Sweden", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 3912.16, "CLV": 20795.22, "RFM_Segment": "Promising", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00018", "FirstName": "Karen", "LastName": "Rodriguez", "Country": "Spain", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 5445.64, "CLV": 16797.11, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00019", "FirstName": "Lucas", "LastName": "Allen", "Country": "Australia", "Segment": "SMB", "TotalOrders": 6.0, "TotalRevenue": 15148.08, "CLV": 47122.58, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00020", "FirstName": "Liam", "LastName": "Perez", "Country": "Sweden", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 17487.02, "CLV": 118199.3, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00021", "FirstName": "Sophia", "LastName": "Miller", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 25104.65, "CLV": 82799.98, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00022", "FirstName": "Charles", "LastName": "Lewis", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 10196.42, "CLV": 38767.64, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00023", "FirstName": "Abigail", "LastName": "Miller", "Country": "Germany", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 13696.15, "CLV": 43723.86, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00024", "FirstName": "William", "LastName": "King", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 2365.71, "CLV": 7995.22, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00025", "FirstName": "Richard", "LastName": "Robinson", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 21133.29, "CLV": 64820.6, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00026", "FirstName": "Lucas", "LastName": "Smith", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 16664.38, "CLV": 58113.04, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00027", "FirstName": "Aiden", "LastName": "Martinez", "Country": "Germany", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 12649.02, "CLV": 58939.05, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00028", "FirstName": "Elizabeth", "LastName": "Clark", "Country": "Italy", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 5220.01, "CLV": 16146.64, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00029", "FirstName": "Karen", "LastName": "Martinez", "Country": "United Kingdom", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 9866.3, "CLV": 84403.11, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00030", "FirstName": "Sophia", "LastName": "Jones", "Country": "Germany", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 12047.0, "CLV": 40967.28, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00031", "FirstName": "Abigail", "LastName": "Walker", "Country": "United Kingdom", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 6008.15, "CLV": 24920.17, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00032", "FirstName": "James", "LastName": "Taylor", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 5979.99, "CLV": 19903.01, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00033", "FirstName": "Karen", "LastName": "Perez", "Country": "Germany", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 17848.17, "CLV": 54898.16, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00034", "FirstName": "Charles", "LastName": "Sanchez", "Country": "France", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 2598.14, "CLV": 9297.27, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00035", "FirstName": "Susan", "LastName": "Garcia", "Country": "Spain", "Segment": "Startup", "TotalOrders": 1.0, "TotalRevenue": 7189.12, "CLV": 12779.36, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00036", "FirstName": "Mia", "LastName": "Perez", "Country": "Australia", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 14073.89, "CLV": 97537.4, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00037", "FirstName": "Liam", "LastName": "Harris", "Country": "France", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 11211.74, "CLV": 35076.73, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00038", "FirstName": "Amelia", "LastName": "Lee", "Country": "Australia", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 12461.86, "CLV": 13853.54, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00039", "FirstName": "Mason", "LastName": "Young", "Country": "France", "Segment": "Enterprise", "TotalOrders": 0.0, "TotalRevenue": 0.0, "CLV": 0.0, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00040", "FirstName": "Mason", "LastName": "Williams", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 21469.97, "CLV": 87396.35, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00041", "FirstName": "Susan", "LastName": "Jones", "Country": "Australia", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 16667.73, "CLV": 18124.29, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00042", "FirstName": "Logan", "LastName": "Thomas", "Country": "Belgium", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 5987.47, "CLV": 35248.82, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00043", "FirstName": "Ethan", "LastName": "Jackson", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 9363.05, "CLV": 40846.77, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00044", "FirstName": "David", "LastName": "Anderson", "Country": "Spain", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 5381.01, "CLV": 18528.95, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00045", "FirstName": "Jennifer", "LastName": "Garcia", "Country": "Belgium", "Segment": "Enterprise", "TotalOrders": 8.0, "TotalRevenue": 29754.14, "CLV": 94437.05, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00046", "FirstName": "Charles", "LastName": "Ramirez", "Country": "France", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 7262.12, "CLV": 21966.91, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00047", "FirstName": "Logan", "LastName": "Miller", "Country": "France", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 21825.28, "CLV": 74683.38, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00048", "FirstName": "Olivia", "LastName": "Miller", "Country": "Belgium", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 18692.72, "CLV": 19833.85, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00049", "FirstName": "Jennifer", "LastName": "Lewis", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 12116.38, "CLV": 37906.96, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00050", "FirstName": "Jessica", "LastName": "Hernandez", "Country": "United Kingdom", "Segment": "Individual", "TotalOrders": 7.0, "TotalRevenue": 36057.18, "CLV": 121484.96, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00051", "FirstName": "Karen", "LastName": "Martin", "Country": "United States", "Segment": "Individual", "TotalOrders": 7.0, "TotalRevenue": 16569.46, "CLV": 51544.2, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00052", "FirstName": "Joseph", "LastName": "Johnson", "Country": "Spain", "Segment": "Individual", "TotalOrders": 1.0, "TotalRevenue": 8532.17, "CLV": 166834.4, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00053", "FirstName": "Richard", "LastName": "Williams", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 3740.04, "CLV": 14420.22, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00054", "FirstName": "Barbara", "LastName": "Lee", "Country": "United States", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 4773.37, "CLV": 17481.07, "RFM_Segment": "Promising", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00055", "FirstName": "Mary", "LastName": "Brown", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 6349.9, "CLV": 7582.49, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00056", "FirstName": "John", "LastName": "Jackson", "Country": "Belgium", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 18392.76, "CLV": 63533.35, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00057", "FirstName": "Jessica", "LastName": "Thompson", "Country": "United Kingdom", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 16860.18, "CLV": 60930.35, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00058", "FirstName": "Ethan", "LastName": "White", "Country": "Spain", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 6016.77, "CLV": 30083.85, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00059", "FirstName": "Robert", "LastName": "Ramirez", "Country": "Spain", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 11626.88, "CLV": 95010.7, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00060", "FirstName": "Amelia", "LastName": "Martinez", "Country": "Italy", "Segment": "Individual", "TotalOrders": 6.0, "TotalRevenue": 20478.3, "CLV": 22135.97, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00061", "FirstName": "Lucas", "LastName": "Thomas", "Country": "Germany", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 29620.0, "CLV": 90345.13, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00062", "FirstName": "Richard", "LastName": "King", "Country": "United States", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 10258.46, "CLV": 15138.83, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00063", "FirstName": "Aiden", "LastName": "Clark", "Country": "Germany", "Segment": "Enterprise", "TotalOrders": 7.0, "TotalRevenue": 23478.71, "CLV": 96651.08, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00064", "FirstName": "Harper", "LastName": "Lopez", "Country": "Australia", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 11408.31, "CLV": 54550.65, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00065", "FirstName": "Sophia", "LastName": "Hernandez", "Country": "France", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 4511.45, "CLV": 28228.79, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00066", "FirstName": "Jessica", "LastName": "Lopez", "Country": "Netherlands", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 18214.89, "CLV": 56662.8, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00067", "FirstName": "Barbara", "LastName": "Garcia", "Country": "Netherlands", "Segment": "Enterprise", "TotalOrders": 1.0, "TotalRevenue": 98.89, "CLV": 364.59, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00068", "FirstName": "James", "LastName": "Harris", "Country": "Spain", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 27730.85, "CLV": 92016.0, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00069", "FirstName": "Michael", "LastName": "Thomas", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 8896.97, "CLV": 27061.62, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00070", "FirstName": "Mia", "LastName": "Young", "Country": "Germany", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 9326.88, "CLV": 28448.28, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00071", "FirstName": "Joseph", "LastName": "Martinez", "Country": "Italy", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 13785.97, "CLV": 50151.62, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00072", "FirstName": "Elizabeth", "LastName": "Anderson", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 4757.62, "CLV": 17902.38, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00073", "FirstName": "Evelyn", "LastName": "Robinson", "Country": "Australia", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 10384.74, "CLV": 43236.85, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00074", "FirstName": "Amelia", "LastName": "Taylor", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 1703.9, "CLV": 6569.61, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00075", "FirstName": "Patricia", "LastName": "Robinson", "Country": "United States", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 13715.13, "CLV": 53635.95, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00076", "FirstName": "Abigail", "LastName": "Taylor", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 13288.82, "CLV": 46489.64, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00077", "FirstName": "Jessica", "LastName": "Smith", "Country": "United States", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 15329.84, "CLV": 50867.2, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00078", "FirstName": "Linda", "LastName": "Robinson", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 8960.0, "CLV": 90844.44, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00079", "FirstName": "Amelia", "LastName": "Jackson", "Country": "United States", "Segment": "Startup", "TotalOrders": 9.0, "TotalRevenue": 26536.38, "CLV": 84224.16, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00080", "FirstName": "William", "LastName": "Hernandez", "Country": "Germany", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 31575.03, "CLV": 31778.18, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00081", "FirstName": "Amelia", "LastName": "Jones", "Country": "Netherlands", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 4115.83, "CLV": 12588.92, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00082", "FirstName": "Evelyn", "LastName": "Lewis", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 6648.95, "CLV": 28219.38, "RFM_Segment": "Promising", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00083", "FirstName": "Abigail", "LastName": "Thompson", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 17145.03, "CLV": 70844.56, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00084", "FirstName": "Liam", "LastName": "Martin", "Country": "United States", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 13978.8, "CLV": 71862.85, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00085", "FirstName": "Mason", "LastName": "Ramirez", "Country": "France", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 14006.41, "CLV": 79056.8, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00086", "FirstName": "Logan", "LastName": "Taylor", "Country": "Italy", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 11465.52, "CLV": 62773.72, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00087", "FirstName": "Mia", "LastName": "Robinson", "Country": "United States", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 6793.02, "CLV": 52382.8, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00088", "FirstName": "Abigail", "LastName": "Martin", "Country": "United States", "Segment": "Enterprise", "TotalOrders": 7.0, "TotalRevenue": 24698.35, "CLV": 79309.95, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00089", "FirstName": "Mason", "LastName": "Gonzalez", "Country": "Germany", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 6720.17, "CLV": 42049.06, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00090", "FirstName": "David", "LastName": "Harris", "Country": "France", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 12129.23, "CLV": 117535.46, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00091", "FirstName": "Ethan", "LastName": "Walker", "Country": "Netherlands", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 15683.7, "CLV": 56678.72, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00092", "FirstName": "Mason", "LastName": "Miller", "Country": "Germany", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 22393.21, "CLV": 24158.19, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00093", "FirstName": "Thomas", "LastName": "Thomas", "Country": "Spain", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 8465.99, "CLV": 45001.26, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00094", "FirstName": "Jessica", "LastName": "Harris", "Country": "Italy", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 8123.03, "CLV": 8560.84, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00095", "FirstName": "Sarah", "LastName": "Thompson", "Country": "Germany", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 10728.71, "CLV": 38266.9, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00096", "FirstName": "Evelyn", "LastName": "Jackson", "Country": "France", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 15725.61, "CLV": 61062.21, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00097", "FirstName": "Harper", "LastName": "Jackson", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 14646.93, "CLV": 49654.45, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00098", "FirstName": "Jessica", "LastName": "Johnson", "Country": "France", "Segment": "Enterprise", "TotalOrders": 5.0, "TotalRevenue": 8206.76, "CLV": 9351.09, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00099", "FirstName": "Sarah", "LastName": "Sanchez", "Country": "Australia", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 2743.2, "CLV": 10883.35, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00100", "FirstName": "Mason", "LastName": "Moore", "Country": "Belgium", "Segment": "Enterprise", "TotalOrders": 1.0, "TotalRevenue": 1813.87, "CLV": 29644.59, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00101", "FirstName": "Robert", "LastName": "Smith", "Country": "Belgium", "Segment": "Individual", "TotalOrders": 0.0, "TotalRevenue": 0.0, "CLV": 0.0, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00102", "FirstName": "Charles", "LastName": "Brown", "Country": "United States", "Segment": "Enterprise", "TotalOrders": 6.0, "TotalRevenue": 27542.32, "CLV": 114672.4, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00103", "FirstName": "Jessica", "LastName": "Young", "Country": "France", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 9317.12, "CLV": 11974.47, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00104", "FirstName": "Sarah", "LastName": "Jackson", "Country": "United States", "Segment": "SMB", "TotalOrders": 8.0, "TotalRevenue": 14128.46, "CLV": 16670.97, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00105", "FirstName": "Olivia", "LastName": "Anderson", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 0.0, "TotalRevenue": 0.0, "CLV": 0.0, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00106", "FirstName": "Liam", "LastName": "Thompson", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 19223.74, "CLV": 20279.38, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00107", "FirstName": "Benjamin", "LastName": "Anderson", "Country": "France", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 8489.9, "CLV": 36172.92, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00108", "FirstName": "Jennifer", "LastName": "Gonzalez", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 6.0, "TotalRevenue": 12713.36, "CLV": 44334.81, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00109", "FirstName": "William", "LastName": "Taylor", "Country": "Australia", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 6715.04, "CLV": 68719.33, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00110", "FirstName": "Barbara", "LastName": "Rodriguez", "Country": "France", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 6541.01, "CLV": 27761.26, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00111", "FirstName": "Joseph", "LastName": "Miller", "Country": "Australia", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 6650.15, "CLV": 45511.96, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00112", "FirstName": "Aiden", "LastName": "Williams", "Country": "France", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 11484.97, "CLV": 13684.49, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00113", "FirstName": "Barbara", "LastName": "Martin", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 2067.1, "CLV": 2309.67, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00114", "FirstName": "Susan", "LastName": "Lewis", "Country": "Italy", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 3567.56, "CLV": 13902.06, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00115", "FirstName": "Robert", "LastName": "Williams", "Country": "France", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 6922.04, "CLV": 21291.11, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00116", "FirstName": "Lucas", "LastName": "White", "Country": "France", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 7622.0, "CLV": 27364.23, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00117", "FirstName": "Lucas", "LastName": "Rodriguez", "Country": "Netherlands", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 5566.48, "CLV": 19228.06, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00118", "FirstName": "Olivia", "LastName": "Garcia", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 2972.01, "CLV": 3525.84, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00119", "FirstName": "Benjamin", "LastName": "Jackson", "Country": "United States", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 10747.82, "CLV": 42795.87, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00120", "FirstName": "Amelia", "LastName": "Lee", "Country": "United Kingdom", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 17695.22, "CLV": 67513.12, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00121", "FirstName": "Lucas", "LastName": "Clark", "Country": "Netherlands", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 19570.98, "CLV": 46185.83, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00122", "FirstName": "Patricia", "LastName": "Lopez", "Country": "United Kingdom", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 7759.63, "CLV": 26635.72, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00123", "FirstName": "Susan", "LastName": "Gonzalez", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 7566.13, "CLV": 25890.35, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00124", "FirstName": "Lucas", "LastName": "Rodriguez", "Country": "France", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 11204.22, "CLV": 15490.68, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00125", "FirstName": "Aiden", "LastName": "White", "Country": "Spain", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 3995.67, "CLV": 4243.7, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00126", "FirstName": "Mary", "LastName": "King", "Country": "Belgium", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 10205.54, "CLV": 31657.41, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00127", "FirstName": "Aiden", "LastName": "Allen", "Country": "Australia", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 7380.13, "CLV": 29601.62, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00128", "FirstName": "Ethan", "LastName": "Moore", "Country": "Australia", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 20406.59, "CLV": 26319.45, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00129", "FirstName": "James", "LastName": "Hernandez", "Country": "Sweden", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 9212.67, "CLV": 9765.61, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00130", "FirstName": "Noah", "LastName": "Taylor", "Country": "Belgium", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 1519.99, "CLV": 11095.93, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00131", "FirstName": "Karen", "LastName": "Walker", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 20196.76, "CLV": 161426.66, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00132", "FirstName": "Aiden", "LastName": "Jackson", "Country": "Belgium", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 8151.91, "CLV": 10588.78, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00133", "FirstName": "Lucas", "LastName": "Perez", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 4550.28, "CLV": 5924.56, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00134", "FirstName": "Benjamin", "LastName": "Davis", "Country": "Sweden", "Segment": "Enterprise", "TotalOrders": 5.0, "TotalRevenue": 20067.68, "CLV": 73738.62, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00135", "FirstName": "Benjamin", "LastName": "Robinson", "Country": "France", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 7808.57, "CLV": 8888.13, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00136", "FirstName": "Joseph", "LastName": "Jones", "Country": "Germany", "Segment": "SMB", "TotalOrders": 3.0, "TotalRevenue": 3266.92, "CLV": 4373.2, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00137", "FirstName": "Harper", "LastName": "Martinez", "Country": "United States", "Segment": "SMB", "TotalOrders": 6.0, "TotalRevenue": 27508.4, "CLV": 84611.51, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00138", "FirstName": "Joseph", "LastName": "Anderson", "Country": "United Kingdom", "Segment": "Enterprise", "TotalOrders": 0.0, "TotalRevenue": 0.0, "CLV": 0.0, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00139", "FirstName": "Sarah", "LastName": "Sanchez", "Country": "Spain", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 334.88, "CLV": 1404.96, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00140", "FirstName": "Mia", "LastName": "White", "Country": "Italy", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 22800.69, "CLV": 73866.14, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00141", "FirstName": "Harper", "LastName": "Garcia", "Country": "United Kingdom", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 4435.77, "CLV": 15178.65, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00142", "FirstName": "Mary", "LastName": "Sanchez", "Country": "Italy", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 15855.51, "CLV": 50617.44, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00143", "FirstName": "Aiden", "LastName": "Smith", "Country": "Spain", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 21712.07, "CLV": 77442.07, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00144", "FirstName": "Olivia", "LastName": "Taylor", "Country": "Australia", "Segment": "Individual", "TotalOrders": 1.0, "TotalRevenue": 1041.49, "CLV": 4437.48, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00145", "FirstName": "Sophia", "LastName": "Davis", "Country": "Italy", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 4270.46, "CLV": 17985.21, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00146", "FirstName": "David", "LastName": "Robinson", "Country": "France", "Segment": "Individual", "TotalOrders": 7.0, "TotalRevenue": 16010.58, "CLV": 61299.25, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00147", "FirstName": "Amelia", "LastName": "White", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 12857.57, "CLV": 47887.89, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00148", "FirstName": "William", "LastName": "Taylor", "Country": "United States", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 15625.86, "CLV": 19032.61, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00149", "FirstName": "Benjamin", "LastName": "Harris", "Country": "Sweden", "Segment": "Individual", "TotalOrders": 5.0, "TotalRevenue": 16805.4, "CLV": 57326.83, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00150", "FirstName": "Mary", "LastName": "White", "Country": "Australia", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 12297.01, "CLV": 46272.25, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00151", "FirstName": "Sophia", "LastName": "Miller", "Country": "Australia", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 11396.77, "CLV": 12355.9, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00152", "FirstName": "Mary", "LastName": "Anderson", "Country": "Germany", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 13181.6, "CLV": 53261.45, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00153", "FirstName": "Jennifer", "LastName": "Walker", "Country": "United States", "Segment": "Enterprise", "TotalOrders": 1.0, "TotalRevenue": 4519.87, "CLV": 28444.01, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00154", "FirstName": "Mia", "LastName": "Johnson", "Country": "Germany", "Segment": "Startup", "TotalOrders": 8.0, "TotalRevenue": 23788.25, "CLV": 74423.24, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00155", "FirstName": "William", "LastName": "Lee", "Country": "Italy", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 8752.09, "CLV": 32376.82, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00156", "FirstName": "Amelia", "LastName": "Anderson", "Country": "Australia", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 10492.95, "CLV": 32548.95, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00157", "FirstName": "Elizabeth", "LastName": "Jones", "Country": "Netherlands", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 19434.21, "CLV": 66501.44, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00158", "FirstName": "Patricia", "LastName": "Robinson", "Country": "Australia", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 14796.5, "CLV": 45639.91, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00159", "FirstName": "Thomas", "LastName": "Martin", "Country": "United Kingdom", "Segment": "Enterprise", "TotalOrders": 2.0, "TotalRevenue": 4524.82, "CLV": 26927.6, "RFM_Segment": "Promising", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00160", "FirstName": "Aiden", "LastName": "Clark", "Country": "Sweden", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 19374.33, "CLV": 59592.39, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00161", "FirstName": "Liam", "LastName": "Davis", "Country": "Australia", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 14704.48, "CLV": 20537.51, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00162", "FirstName": "Susan", "LastName": "Rodriguez", "Country": "Spain", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 13854.03, "CLV": 24194.84, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00163", "FirstName": "Amelia", "LastName": "Williams", "Country": "Belgium", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 12798.3, "CLV": 41461.95, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00164", "FirstName": "Liam", "LastName": "Williams", "Country": "Germany", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 5266.58, "CLV": 30512.73, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00165", "FirstName": "Olivia", "LastName": "Martin", "Country": "Spain", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 15541.42, "CLV": 50052.51, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00166", "FirstName": "Aiden", "LastName": "Young", "Country": "Italy", "Segment": "SMB", "TotalOrders": 6.0, "TotalRevenue": 10516.41, "CLV": 60928.41, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00167", "FirstName": "Sarah", "LastName": "Davis", "Country": "United Kingdom", "Segment": "SMB", "TotalOrders": 8.0, "TotalRevenue": 11036.12, "CLV": 38121.61, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00168", "FirstName": "Lucas", "LastName": "Miller", "Country": "Sweden", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 1098.96, "CLV": 6996.29, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00169", "FirstName": "Thomas", "LastName": "Thomas", "Country": "Italy", "Segment": "Enterprise", "TotalOrders": 3.0, "TotalRevenue": 11333.53, "CLV": 65316.92, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00170", "FirstName": "Jennifer", "LastName": "Rodriguez", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 16369.71, "CLV": 53828.33, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00171", "FirstName": "Ethan", "LastName": "Harris", "Country": "Germany", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 10574.16, "CLV": 49908.21, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00172", "FirstName": "Mary", "LastName": "Robinson", "Country": "Sweden", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 5954.6, "CLV": 19233.88, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00173", "FirstName": "Benjamin", "LastName": "White", "Country": "Germany", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 18154.23, "CLV": 59876.15, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00174", "FirstName": "Patricia", "LastName": "Clark", "Country": "Spain", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 10781.34, "CLV": 11793.77, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00175", "FirstName": "Noah", "LastName": "Martinez", "Country": "Spain", "Segment": "Startup", "TotalOrders": 1.0, "TotalRevenue": 1117.47, "CLV": 2528.16, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00176", "FirstName": "Joseph", "LastName": "Clark", "Country": "United States", "Segment": "Startup", "TotalOrders": 4.0, "TotalRevenue": 6020.05, "CLV": 8754.26, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00177", "FirstName": "Robert", "LastName": "Miller", "Country": "Netherlands", "Segment": "Individual", "TotalOrders": 1.0, "TotalRevenue": 1814.78, "CLV": 10514.2, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00178", "FirstName": "John", "LastName": "Young", "Country": "United States", "Segment": "Individual", "TotalOrders": 3.0, "TotalRevenue": 14147.64, "CLV": 73420.22, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00179", "FirstName": "Mary", "LastName": "Clark", "Country": "Belgium", "Segment": "Individual", "TotalOrders": 4.0, "TotalRevenue": 11425.28, "CLV": 35744.8, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00180", "FirstName": "Jessica", "LastName": "Moore", "Country": "France", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 11332.84, "CLV": 35154.28, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00181", "FirstName": "Richard", "LastName": "Williams", "Country": "United States", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 9700.49, "CLV": 12195.22, "RFM_Segment": "Need Attention", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00182", "FirstName": "Mary", "LastName": "White", "Country": "France", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 8115.36, "CLV": 8678.05, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00183", "FirstName": "Barbara", "LastName": "Wilson", "Country": "Spain", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 122.9, "CLV": 160.02, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00184", "FirstName": "Jessica", "LastName": "Lewis", "Country": "Spain", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 14554.34, "CLV": 150349.08, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00185", "FirstName": "William", "LastName": "Lewis", "Country": "United Kingdom", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 20540.21, "CLV": 100408.62, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00186", "FirstName": "Ethan", "LastName": "Thomas", "Country": "United States", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 18254.2, "CLV": 61126.45, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00187", "FirstName": "Linda", "LastName": "White", "Country": "Netherlands", "Segment": "SMB", "TotalOrders": 1.0, "TotalRevenue": 85.22, "CLV": 398.79, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00188", "FirstName": "Susan", "LastName": "Miller", "Country": "Australia", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 17671.99, "CLV": 55130.57, "RFM_Segment": "Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00189", "FirstName": "Amelia", "LastName": "White", "Country": "Italy", "Segment": "Startup", "TotalOrders": 3.0, "TotalRevenue": 14625.69, "CLV": 54288.58, "RFM_Segment": "Potential Loyal", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00190", "FirstName": "Thomas", "LastName": "Thompson", "Country": "United States", "Segment": "Enterprise", "TotalOrders": 4.0, "TotalRevenue": 13987.92, "CLV": 48935.38, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00191", "FirstName": "Emma", "LastName": "Brown", "Country": "Australia", "Segment": "Individual", "TotalOrders": 2.0, "TotalRevenue": 9291.23, "CLV": 53830.14, "RFM_Segment": "Promising", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00192", "FirstName": "David", "LastName": "Sanchez", "Country": "France", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 3001.6, "CLV": 11217.58, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00193", "FirstName": "Linda", "LastName": "Moore", "Country": "Netherlands", "Segment": "Startup", "TotalOrders": 5.0, "TotalRevenue": 6183.33, "CLV": 55956.58, "RFM_Segment": "Need Attention", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00194", "FirstName": "David", "LastName": "Gonzalez", "Country": "Italy", "Segment": "SMB", "TotalOrders": 2.0, "TotalRevenue": 8351.65, "CLV": 16998.25, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00195", "FirstName": "Karen", "LastName": "Davis", "Country": "Italy", "Segment": "Startup", "TotalOrders": 2.0, "TotalRevenue": 6739.43, "CLV": 21267.08, "RFM_Segment": "Lost", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00196", "FirstName": "Michael", "LastName": "Robinson", "Country": "United States", "Segment": "Enterprise", "TotalOrders": 5.0, "TotalRevenue": 21697.55, "CLV": 24982.98, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00197", "FirstName": "Mary", "LastName": "Garcia", "Country": "Italy", "Segment": "SMB", "TotalOrders": 5.0, "TotalRevenue": 18847.72, "CLV": 60169.83, "RFM_Segment": "Loyal", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00198", "FirstName": "Karen", "LastName": "Wilson", "Country": "Australia", "Segment": "Startup", "TotalOrders": 1.0, "TotalRevenue": 2417.63, "CLV": 155723.81, "RFM_Segment": "New Customer", "ChurnRiskBand": "Low", "IsChurned": 0}, {"CustomerID": "CUST00199", "FirstName": "Aiden", "LastName": "Johnson", "Country": "Germany", "Segment": "SMB", "TotalOrders": 4.0, "TotalRevenue": 16742.54, "CLV": 50784.16, "RFM_Segment": "At Risk", "ChurnRiskBand": "High", "IsChurned": 1}, {"CustomerID": "CUST00200", "FirstName": "Sophia", "LastName": "Brown", "Country": "France", "Segment": "Startup", "TotalOrders": 6.0, "TotalRevenue": 24183.68, "CLV": 101460.27, "RFM_Segment": "Champion", "ChurnRiskBand": "Low", "IsChurned": 0}];
+
+// ── COLOUR PALETTES ───────────────────────────────────────────────────────────
+const BLUES   = ['#58a6ff','#388bfd','#1f6feb','#0550ae','#033d8b','#0246b5','#1a7f64'];
+const GREENS  = ['#3fb950','#2ea043','#238636','#196c2e','#0f4f21'];
+const MIXED   = ['#58a6ff','#3fb950','#e3b341','#f85149','#bc8cff','#ffa657','#39d353','#ff7b72'];
+const RISK_C  = {'Low':'#3fb950','Medium':'#e3b341','High':'#f85149','nan':'#8b949e'};
+
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#30363d';
+Chart.defaults.font.family = 'Inter';
+Chart.defaults.plugins.legend.labels.padding = 16;
+
+function mkChart(id, type, labels, data, colors, opts={}) {
+  const ctx = document.getElementById(id);
+  if(!ctx) return;
+  return new Chart(ctx, {
+    type, data:{
+      labels,
+      datasets:[{
+        data, backgroundColor: colors,
+        borderColor: type==='line'? colors[0]:'transparent',
+        borderWidth: type==='line'? 2.5:0,
+        fill: type==='line',
+        tension: 0.4,
+        pointRadius: type==='line'? 3:0,
+        pointHoverRadius: type==='line'? 6:0,
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display: type!=='bar', position:'bottom',
+        labels:{boxWidth:12, padding:14, font:{size:11}}}},
+      scales: (type==='bar'||type==='line') ? {
+        x:{grid:{color:'#21262d'},ticks:{font:{size:10}, maxRotation:45}},
+        y:{grid:{color:'#21262d'},ticks:{font:{size:10},
+          callback: v=> v>=1000? '$'+(v/1000).toFixed(0)+'k': v}}
+      }:{},
+      ...opts
+    }
+  });
+}
+
+// Monthly trend
+mkChart('monthlyChart','line', M_LABELS, M_VALUES,
+  ['rgba(88,166,255,0.3)'],
+  {plugins:{legend:{display:false}},
+   datasets_override: null});
+
+// Country bar
+mkChart('countryChart','bar',
+  Object.keys(CNTRY_DATA), Object.values(CNTRY_DATA), BLUES,
+  {plugins:{legend:{display:false}}});
+
+// Tier doughnut
+mkChart('tierChart','doughnut',
+  Object.keys(TIER_DATA), Object.values(TIER_DATA), MIXED);
+
+// Segment bar
+mkChart('segChart','bar',
+  Object.keys(SEG_DATA), Object.values(SEG_DATA), MIXED,
+  {plugins:{legend:{display:false}},
+   scales:{x:{grid:{color:'#21262d'},ticks:{font:{size:10}}},
+           y:{grid:{color:'#21262d'},ticks:{font:{size:10}}}}});
+
+// Risk doughnut
+const riskColors = Object.keys(RISK_DATA).map(k=>RISK_C[k]||'#8b949e');
+mkChart('riskChart','doughnut',
+  Object.keys(RISK_DATA), Object.values(RISK_DATA), riskColors);
+
+// Churn donut
+const churnActive = TABLE_DATA.filter(r=>r.IsChurned===0||r.IsChurned==='0').length;
+const churnChurned = TABLE_DATA.length - churnActive;
+mkChart('churnDonut','doughnut',
+  ['Active','Churned'],[churnActive,churnChurned],['#3fb950','#f85149']);
+
+// Segment mix (from table data)
+const segMix = {};
+TABLE_DATA.forEach(r=>{const s=r.Segment||'Unknown'; segMix[s]=(segMix[s]||0)+1;});
+mkChart('segMixChart','doughnut', Object.keys(segMix), Object.values(segMix), MIXED);
+
+// ── TABLE ─────────────────────────────────────────────────────────────────────
+let filtered = [...TABLE_DATA];
+let currentPage = 1;
+const PAGE_SIZE = 15;
+const COLS = ['CustomerID','FirstName','LastName','Country','Segment',
+              'TotalOrders','TotalRevenue','CLV','RFM_Segment','ChurnRiskBand','IsChurned'];
+const COL_LABELS = ['ID','First','Last','Country','Segment',
+                    'Orders','Revenue','CLV','RFM Segment','Risk','Status'];
+
+// Populate filters
+function populateFilter(id, col) {
+  const sel = document.getElementById(id);
+  const vals = [...new Set(TABLE_DATA.map(r=>r[col]).filter(Boolean))].sort();
+  vals.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=v; sel.appendChild(o);});
+}
+populateFilter('filterSeg','RFM_Segment');
+populateFilter('filterRisk','ChurnRiskBand');
+
+// Build header
+const thead = document.getElementById('thead');
+const tr = document.createElement('tr');
+COL_LABELS.forEach((lbl,i)=>{
+  const th = document.createElement('th');
+  th.textContent = lbl + ' ↕';
+  th.dataset.col = COLS[i];
+  let asc = true;
+  th.onclick = ()=>{
+    filtered.sort((a,b)=>{
+      const va=a[COLS[i]]??'', vb=b[COLS[i]]??'';
+      return asc ? (va>vb?1:-1) : (va<vb?1:-1);
+    });
+    asc=!asc; currentPage=1; renderTable();
+  };
+  tr.appendChild(th);
+});
+thead.appendChild(tr);
+
+function riskBadge(v){ return `<span class="badge b-${(v||'').toLowerCase()==='low'?'low':(v||'').toLowerCase()==='high'?'high':'med'}">${v||'—'}</span>`;}
+function churnBadge(v){ return parseInt(v)===1?'<span class="badge b-churn">Churned</span>':'<span class="badge b-active">Active</span>';}
+function segBadge(v){ return `<span class="badge b-seg">${v||'—'}</span>`;}
+
+function renderTable(){
+  const tbody = document.getElementById('tbody');
+  const start = (currentPage-1)*PAGE_SIZE;
+  const page = filtered.slice(start, start+PAGE_SIZE);
+  tbody.innerHTML = page.map(row=>`<tr>${COLS.map((c,i)=>{
+    const v = row[c]??'';
+    if(c==='ChurnRiskBand') return `<td>${riskBadge(v)}</td>`;
+    if(c==='IsChurned') return `<td>${churnBadge(v)}</td>`;
+    if(c==='RFM_Segment') return `<td>${segBadge(v)}</td>`;
+    if(c==='TotalRevenue'||c==='CLV') return `<td>$${parseFloat(v||0).toFixed(0)}</td>`;
+    return `<td>${v}</td>`;
+  }).join('')}</tr>`).join('');
+  renderPagination();
+  document.getElementById('summary-bar').innerHTML =
+    `<span>Showing <b>${Math.min(start+1,filtered.length)}–${Math.min(start+PAGE_SIZE,filtered.length)}</b> of <b>${filtered.length}</b> customers</span>`;
+}
+
+function renderPagination(){
+  const pages = Math.ceil(filtered.length/PAGE_SIZE);
+  const p = document.getElementById('pagination');
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage<=1?'disabled':''}>‹ Prev</button>`;
+  for(let i=Math.max(1,currentPage-2);i<=Math.min(pages,currentPage+2);i++){
+    html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  html+=`<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage>=pages?'disabled':''}>Next ›</button>`;
+  p.innerHTML = html;
+}
+function goPage(n){ currentPage=n; renderTable(); window.scrollTo({top:document.getElementById('mainTable').offsetTop-80,behavior:'smooth'});}
+
+function filterTable(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const seg = document.getElementById('filterSeg').value;
+  const risk = document.getElementById('filterRisk').value;
+  const churn = document.getElementById('filterChurn').value;
+  filtered = TABLE_DATA.filter(r=>{
+    const text = (r.CustomerID+r.FirstName+r.LastName+r.Country+r.Segment).toLowerCase();
+    return (!q||text.includes(q)) &&
+           (!seg||r.RFM_Segment===seg) &&
+           (!risk||r.ChurnRiskBand===risk) &&
+           (churn===''||String(r.IsChurned)===churn);
+  });
+  currentPage=1; renderTable();
+}
+
+// Init
+renderTable();
+document.getElementById('run-time').textContent = new Date().toLocaleString();
+document.getElementById('gen-date').textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>
